@@ -8,13 +8,13 @@ public class FuncionalidadEnemigos : MonoBehaviour
     public Arma armaEnemigo;
     public int vidaEnemigo;
 
-    private GameObject target;
+    //private GameObject target;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player");
+        //target = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -30,7 +30,7 @@ public class FuncionalidadEnemigos : MonoBehaviour
             velocidadEnemigo = 2.5f;
         }
 
-        float step = velocidadEnemigo * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step);
+        //float step = velocidadEnemigo * Time.deltaTime;
+        //transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step);
     }
 }
