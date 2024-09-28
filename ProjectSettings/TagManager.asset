@@ -4,15 +4,26 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Arma
+  - Enemigo
+  - Pared
+  - Bala
+  - ArmaMelee
+  - ArmaDistancia
+  - ArmaSuelo
+  - Legia
+  - Aceite
+  - Sirope
+  - LegiaArea
+  - AceiteArea
+  - SiropeArea
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

@@ -6,6 +6,7 @@ public class ColisoinesPersonaje : MonoBehaviour
 {
     //public Personaje personaje;
     public bool enArea;
+    public string nombreArma;
 
     /*private void OnTriggerStay2D(Collider2D collision)
     {
@@ -18,14 +19,15 @@ public class ColisoinesPersonaje : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Arma"))
+        if (collision.CompareTag("ArmaSuelo"))
         {
             Debug.Log("Entras");
             enArea = true;
 
             if (this.gameObject.GetComponent<Personaje>().armaAux == null)
             {
-                this.gameObject.GetComponent<Personaje>().armaAux = Instantiate(collision.gameObject);
+                nombreArma = collision.gameObject.GetComponent<Arma>().nombreArma;
+                Debug.Log(nombreArma);
             }
 
             //personaje.cogerArma();
@@ -34,7 +36,7 @@ public class ColisoinesPersonaje : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Arma"))
+        if (collision.CompareTag("ArmaSuelo"))
         {
             if (!this.gameObject.GetComponent<Personaje>().armaCogida)
             {

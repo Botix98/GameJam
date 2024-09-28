@@ -27,6 +27,15 @@ public class Personaje : MonoBehaviour
     // Update se llama una vez por frame
     void Update()
     {
+        /*Debug.Log(GetComponent<ColisionEnemigos>().legia);
+        if (GetComponent<ColisionEnemigos>().legia)
+        {
+            moveSpeed = 0f;
+        }
+        else
+        {
+            moveSpeed = 5f;
+        }*/
         movimientoPersonaje();
         cogerArma();
     }
@@ -47,9 +56,28 @@ public class Personaje : MonoBehaviour
         if (Input.GetButtonDown("CogerObjeto") && colisiones.enArea)
         {
             Destroy(armaEquipada);
-            armaEquipada = armaAux;
+            armaEquipada = Instantiate(GameObject.Find(GetComponent<ColisoinesPersonaje>().nombreArma));
+
+            if (armaEquipada.GetComponent<Arma>().areaArma)
+            {
+                armaEquipada.tag = armaEquipada.GetComponent<Arma>().nombreArma;
+            }
+            else if (armaEquipada.GetComponent<Arma>().armaDistancia)
+            {
+                armaEquipada.tag = "ArmaDistancia";
+            }
+            else 
+            {
+                armaEquipada.tag = "ArmaMelee";
+            }
+
             armaCogida = true;
             armaEquipada.transform.parent = this.transform;
+
+            if (!armaEquipada.GetComponent<Arma>().armaDistancia)
+            {
+                armaEquipada.GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
     }
 
