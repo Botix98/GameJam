@@ -13,6 +13,7 @@ public class Arma : MonoBehaviour
     public int valorArea = 10;
     public int tiempoAreaArma = 10;
     public bool armaDistancia;
+    public bool armaEnemigo = false;
 
     private void Update()
     {

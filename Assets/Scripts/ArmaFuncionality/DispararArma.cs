@@ -81,6 +81,12 @@ public class DispararArma : MonoBehaviour
             //Que vaya en la direccion del raton
             //Que desaparezca si choca con una pared, choca contra un enemigo o llega al rango maximo (calcular la distancia que lleva recorrida)
             balaAux = Instantiate(balaPrefab, this.GetComponent<Personaje>().armaEquipada.transform.position, this.GetComponent<Personaje>().armaEquipada.transform.rotation);
+            balaAux.GetComponent<Bala>().damage = this.gameObject.transform.GetChild(1).GetComponent<Arma>().damageArma;
+
+            /*if (this.gameObject.transform.GetChild(1).GetComponent<Arma>().armaEnemigo)
+            {
+                balaAux.GetComponent<Bala>().balaEnemigo = true;
+            }*/
 
             timer = this.GetComponent<Personaje>().armaEquipada.GetComponent<Arma>().cadenciaArma;
             this.GetComponent<Personaje>().armaEquipada.GetComponent<Arma>().municionArma--;

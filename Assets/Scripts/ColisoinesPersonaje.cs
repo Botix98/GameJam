@@ -32,6 +32,29 @@ public class ColisoinesPersonaje : MonoBehaviour
 
             //personaje.cogerArma();
         }
+        else if (collision.CompareTag("ArmaMelee") && collision.gameObject.GetComponent<Arma>().armaEnemigo)
+        {
+            this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
+
+            comprobarVida();
+            
+        }
+        else if (collision.CompareTag("Bala") && collision.gameObject.GetComponent<Bala>().balaEnemigo)
+        {
+            this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Bala>().damage;
+
+            comprobarVida();
+        }
+    }
+
+    private void comprobarVida()
+    {
+        if (this.gameObject.GetComponent<Personaje>().vidaPersonaje <= 0)
+        {
+            //GAME OVER
+            Debug.Log("La mamastes");
+            Destroy(this.gameObject);
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)

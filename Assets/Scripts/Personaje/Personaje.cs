@@ -18,6 +18,8 @@ public class Personaje : MonoBehaviour
     
     public ColisoinesPersonaje colisiones;
 
+    public int vidaPersonaje = 15;
+
     // Start se llama antes del primer frame
     void Start()
     {
@@ -56,7 +58,7 @@ public class Personaje : MonoBehaviour
         if (Input.GetButtonDown("CogerObjeto") && colisiones.enArea)
         {
             Destroy(armaEquipada);
-            armaEquipada = Instantiate(GameObject.Find(GetComponent<ColisoinesPersonaje>().nombreArma));
+            armaEquipada = Instantiate(GameObject.Find(GetComponent<ColisoinesPersonaje>().nombreArma)); //CUIDADO CON EL FIND
 
             if (armaEquipada.GetComponent<Arma>().areaArma)
             {
