@@ -29,6 +29,12 @@ public class AreaDeCompra : MonoBehaviour
         if (timer >= 7f)
         {
             listaDeLaCompra.GetComponent<ListaCompra>().lista[indicador] = true;
+            listaDeLaCompra.GetComponent<ListaCompra>().elementosRecogidos++;
+
+            GameObject.Find("RecuperarVida 1").GetComponent<CircleCollider2D>().enabled = true;
+            GameObject.Find("RecuperarVida 2").GetComponent<CircleCollider2D>().enabled = true;
+            GameObject.Find("RecuperarVida 3").GetComponent<CircleCollider2D>().enabled = true;
+
             Destroy(this.gameObject);
         }
     }

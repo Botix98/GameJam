@@ -1,13 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Personaje : MonoBehaviour
 {
-    public float moveSpeed = 5f; // Velocidad de movimiento
+    public float moveSpeed = 5f; // Velocidad de movimiento actual
+    public float maxMoveSpeed = 20f;
+    public float minMoveSpeed = 5f;
+
+    private bool flashActivo = false;
 
     private Rigidbody2D rb;
     private Vector2 movement;
+
+    Vector3 shootDirection;
+    Vector3 mousePosition;
 
     public GameObject armaAux;
     public GameObject armaEquipada;
@@ -20,6 +28,8 @@ public class Personaje : MonoBehaviour
 
     public int vidaPersonaje = 15;
 
+    private float timer = 0f;
+
     // Start se llama antes del primer frame
     void Start()
     {
@@ -29,29 +39,14 @@ public class Personaje : MonoBehaviour
     // Update se llama una vez por frame
     void Update()
     {
-        /*Debug.Log(GetComponent<ColisionEnemigos>().legia);
-        if (GetComponent<ColisionEnemigos>().legia)
+        if (timer > 0f)
         {
-            moveSpeed = 0f;
+            timer -= Time.deltaTime;
         }
-        else
-        {
-            moveSpeed = 5f;
-        }*/
+
         movimientoPersonaje();
         cogerArma();
     }
-
-    /*public void cogerArma()
-    {
-        if (Input.GetButtonDown("CogerObjeto") && comprobar != null)
-        {
-            if (comprobar.enArea)
-            {
-                Debug.Log("objeto cogido");
-            }
-        }
-    }*/
 
     public void cogerArma()
     {
@@ -92,7 +87,41 @@ public class Personaje : MonoBehaviour
         // Normalizamos el vector para que no se mueva más rápido en diagonal
         movement = movement.normalized;
 
-        // Movemos el personaje
+        if (Input.GetKeyDown("space"))// && timer <= 0f)
+        {
+            flashActivo = true;
+            //timer = 5f;
+            //moveSpeed = Mathf.Lerp(moveSpeed, maxMoveSpeed, 0.2f);
+        }
+        
+        
+        if (flashActivo)
+        {
+            moveSpeed = Mathf.Lerp(moveSpeed, maxMoveSpeed, 0.2f);
+            if (Mathf.Round(moveSpeed) == maxMoveSpeed)
+            {
+                flashActivo = false;
+            }
+        }
+        else
+        {
+            moveSpeed = Mathf.Lerp(moveSpeed, minMoveSpeed, 0.1f);
+        }
+
+
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+        // Movemos el personaje
+        //rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+
+        //correr();
+    }
+
+    private void correr()
+    {
+        if (Input.GetKey("space"))
+        {
+            rb.AddForce(movement, ForceMode2D.Force);
+        }
     }
 }

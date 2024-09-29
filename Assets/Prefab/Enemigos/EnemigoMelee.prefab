@@ -202,6 +202,7 @@ MonoBehaviour:
   jugador: {fileID: 0}
   balaAux: {fileID: 0}
   balaPrefab: {fileID: 0}
+  carroPrefab: {fileID: 0}
 --- !u!114 &7647852201237854907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,7 +295,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6825846643343512884}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

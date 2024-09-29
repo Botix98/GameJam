@@ -16,6 +16,7 @@ TagManager:
   - LegiaArea
   - AceiteArea
   - SiropeArea
+  - RecuperarVida
   layers:
   - Default
   - TransparentFX

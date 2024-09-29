@@ -10,11 +10,16 @@ public class FuncionalidadEnemigos : MonoBehaviour
     public Arma armaEnemigo;
     public int vidaEnemigo = 3;
     public float velocidadEnemigo;
+    private bool carroDisparado = false;
 
     public GameObject jugador;
 
     public GameObject balaAux;
     public GameObject balaPrefab;
+    public GameObject carroPrefab;
+    public GameObject carroAux;
+    public GameObject bolsoPrefab;
+    public GameObject bolso;
 
     private float timer = 0f;
 
@@ -26,6 +31,10 @@ public class FuncionalidadEnemigos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.GetComponent<AIDestinationSetter>().target = GameObject.FindGameObjectWithTag("Player").transform;
+
+        jugador = GameObject.FindGameObjectWithTag("Player");
+
         this.gameObject.GetComponent<AIPath>().maxSpeed = velocidadEnemigo;
         //target = GameObject.FindGameObjectWithTag("Player");
     }
@@ -38,9 +47,14 @@ public class FuncionalidadEnemigos : MonoBehaviour
         comprobarLegia();
         comprobarSirope();
 
-        if (armaEnemigo.CompareTag("ArmaDistancia"))
+        if (armaEnemigo.CompareTag("ArmaDistancia") && !this.gameObject.name.Contains("ViejaCarroYBolso"))
         {
             dispararArma();
+        }
+
+        if (this.gameObject.name.Contains("ViejaCarroYBolso") && !carroDisparado)
+        {
+            dispararCarro();
         }
 
         if (timer >= 0f)
@@ -95,6 +109,30 @@ public class FuncionalidadEnemigos : MonoBehaviour
         else if (!GetComponent<ColisionEnemigos>().aceite && !GetComponent<ColisionEnemigos>().legia)
         {
             this.gameObject.GetComponent<AIPath>().maxSpeed = velocidadEnemigo;
+        }
+    }
+
+    public void dispararCarro()
+    {
+        if (timer <= 0f && Mathf.Abs((jugador.transform.position - this.gameObject.transform.position).magnitude) < 5f)
+        {
+            Debug.Log("Carro disparado");
+
+            carroDisparado = true;
+
+            bolso = Instantiate(bolsoPrefab, transform.position, transform.rotation);
+            bolso.transform.parent = this.transform;
+
+            carroAux = Instantiate(carroPrefab, armaEnemigo.transform.position, armaEnemigo.transform.rotation);
+            carroAux.GetComponent<CarroProyectil>().damage = armaEnemigo.damageArma;
+            carroAux.GetComponent<CarroProyectil>().balaEnemigo = true;
+
+            timer = armaEnemigo.GetComponent<Arma>().cadenciaArma;
+
+            armaEnemigo = bolso.GetComponent<Arma>();
+
+            Destroy(this.gameObject.transform.GetChild(1).gameObject);
+            //armaEnemigo.GetComponent<Arma>().municionArma--;
         }
     }
 
