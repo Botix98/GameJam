@@ -1,0 +1,51 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AreaDeCompra : MonoBehaviour
+{
+    private float timer = 0f;
+    private bool enArea = false;
+    public int indicador;
+    public GameObject listaDeLaCompra;
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (enArea)
+        {
+            timer += Time.deltaTime;
+        }
+        else if (timer != 0f)
+        {
+            timer -= Time.deltaTime;
+        }
+
+        if (timer < 0f)
+        {
+            timer = 0f;
+        }
+
+        if (timer >= 7f)
+        {
+            listaDeLaCompra.GetComponent<ListaCompra>().lista[indicador] = true;
+            Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            enArea = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            enArea = false;
+        }
+    }
+}
