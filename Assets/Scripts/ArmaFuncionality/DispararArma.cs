@@ -46,9 +46,18 @@ public class DispararArma : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && timer <= 0f)
         {
             Debug.Log("Equipamiento");
-
-            balaAux = Instantiate(aceitePrefab, this.GetComponent<Personaje>().armaEquipada.transform.position, this.GetComponent<Personaje>().armaEquipada.transform.rotation);
-
+            switch (this.gameObject.transform.GetChild(1).GetComponent<Arma>().tag)
+            {
+                case "Sirope":
+                    balaAux = Instantiate(siropePrefab, this.GetComponent<Personaje>().armaEquipada.transform.position, this.GetComponent<Personaje>().armaEquipada.transform.rotation);
+                    break;
+                case "Aceite":
+                    balaAux = Instantiate(aceitePrefab, this.GetComponent<Personaje>().armaEquipada.transform.position, this.GetComponent<Personaje>().armaEquipada.transform.rotation);
+                    break;
+                case "Legia":
+                    balaAux = Instantiate(lejiaPrefab, this.GetComponent<Personaje>().armaEquipada.transform.position, this.GetComponent<Personaje>().armaEquipada.transform.rotation);
+                    break;
+            }
             Destroy(this.GetComponent<Personaje>().armaEquipada);
         }
     }

@@ -5,19 +5,22 @@ using UnityEngine;
 public class ColisionEnemigos : MonoBehaviour
 {
     public bool legia = false;
+    public bool sirope = false;
+    public bool aceite = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log(collision.name);
         //EN VEZ DE DESTRUIR AL ENEMIGO LO QUE TENGO QUE HACER ES QUE PIERDA VIDA
         //EL COLIDER DEL JAMON QUE SEA UN AREA EN VEZ DE MOVER EL JAMON CON EL COLIDER CON LA FORMA DEL SPRITE
         if (collision.CompareTag("Bala") && !collision.gameObject.GetComponent<Bala>().balaEnemigo)
         {
             this.gameObject.GetComponent<FuncionalidadEnemigos>().vidaEnemigo -= collision.gameObject.GetComponent<Bala>().damage;
             
-            if (this.gameObject.GetComponent<FuncionalidadEnemigos>().vidaEnemigo <= 0)
+            /*if (this.gameObject.GetComponent<FuncionalidadEnemigos>().vidaEnemigo <= 0)
             {
                 Destroy(this.gameObject);
-            }
+            }*/
         }
         else if (collision.CompareTag("ArmaMelee") && !collision.gameObject.GetComponent<Arma>().armaEnemigo)
         {
@@ -25,23 +28,23 @@ public class ColisionEnemigos : MonoBehaviour
 
             this.gameObject.GetComponent<FuncionalidadEnemigos>().vidaEnemigo -= collision.gameObject.GetComponent<Arma>().damageArma;
 
-            if (this.gameObject.GetComponent<FuncionalidadEnemigos>().vidaEnemigo <= 0)
+            /*if (this.gameObject.GetComponent<FuncionalidadEnemigos>().vidaEnemigo <= 0)
             {
                 Destroy(this.gameObject);
-            }
+            }*/
         }
         else if (collision.CompareTag("LegiaArea"))
         {
             legia = true;
             //this.gameObject.GetComponent<FuncionalidadEnemigos>().velocidadEnemigo = 0;
         }
-        else if (collision.CompareTag("Aceite"))
+        else if (collision.CompareTag("AceiteArea"))
         {
-
+            aceite = true;
         }
-        else if (collision.CompareTag("Sirope"))
+        else if (collision.CompareTag("SiropeArea"))
         {
-
+            sirope = true;
         }
     }
 
@@ -52,13 +55,13 @@ public class ColisionEnemigos : MonoBehaviour
             legia = true;
             //this.gameObject.GetComponent<FuncionalidadEnemigos>().velocidadEnemigo = 0;
         }
-        else if (collision.CompareTag("Aceite"))
+        else if (collision.CompareTag("AceiteArea"))
         {
-
+            aceite = true;
         }
-        else if (collision.CompareTag("Sirope"))
+        else if (collision.CompareTag("SiropeArea"))
         {
-
+            sirope = true;
         }
     }
 
@@ -69,13 +72,13 @@ public class ColisionEnemigos : MonoBehaviour
             legia = false;
             //this.gameObject.GetComponent<Personaje>().moveSpeed = 0;
         }
-        else if (collision.CompareTag("Aceite"))
+        else if (collision.CompareTag("AceiteArea"))
         {
-
+            aceite = false;
         }
-        else if (collision.CompareTag("Sirope"))
+        else if (collision.CompareTag("SiropeArea"))
         {
-
+            sirope = false;
         }
     }
 

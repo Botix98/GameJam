@@ -6,7 +6,8 @@ using UnityEngine.UIElements;
 
 public class Bala : MonoBehaviour
 {
-    public float alcance;
+    public float alcanceMax;
+    //public float alcance;
 
     public int damage;
 
@@ -14,6 +15,8 @@ public class Bala : MonoBehaviour
 
     //Vector2 posicion;
     Vector2 shootDirection;
+
+    Vector3 posInicialBala;
 
     Vector3 mousePosition;
     private float velocidad = 10f;
@@ -26,6 +29,8 @@ public class Bala : MonoBehaviour
     {
         //rb = GetComponent<Rigidbody2D>();
 
+        posInicialBala = transform.position;
+
         rb = GetComponent<Rigidbody2D>();
 
         if (!balaEnemigo)
@@ -35,41 +40,68 @@ public class Bala : MonoBehaviour
 
             shootDirection = (mousePosition - transform.position).normalized;
 
-            alcance = GameObject.FindGameObjectWithTag("Player").transform.GetChild(1).GetComponent<Arma>().alcanceArma;
+            //alcance = (mousePosition - transform.position).magnitude;
+
+            alcanceMax = GameObject.FindGameObjectWithTag("Player").transform.GetChild(1).GetComponent<Arma>().alcanceArma;
+
+            //if (alcance > alcanceMax)
+            //{
+            //    alcance = alcanceMax;
+            //}
         }
         else
         {
             shootDirection = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
 
-            alcance = GameObject.FindGameObjectWithTag("Enemigo").transform.GetChild(1).GetComponent<Arma>().alcanceArma;
+            alcanceMax = GameObject.FindGameObjectWithTag("Enemigo").transform.GetChild(1).GetComponent<Arma>().alcanceArma;
         }
     }
 
     void Update()
     {
-        Destroy(this.gameObject, alcance); //El tiempo de destruccion corresponde con el alcance de la bala
-
-        /*if (balaEnemigo)
+        if ((transform.position - posInicialBala).magnitude < alcanceMax)
         {
-            disparoEnemigo();
+            rb.velocity = shootDirection * velocidad;
         }
         else
-        {*/
-            rb.velocity = shootDirection * velocidad;
-        //}
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    /*private void trayectoriaBala()
+    /*void Update()
     {
-        Vector3 posicion = new Vector3();
-
-        posicion = Camera.main.ScreenToWorldPoint(mousePosition);
+        Debug.Log("---------------------");
+        Debug.Log("Alcance:    " + alcance);
+        Debug.Log("Recorrido:  " + (transform.position - mousePosition).magnitude);
+        Debug.Log("Diferencia: " + (alcance - (transform.position - mousePosition).magnitude));
+        Destroy(this.gameObject, alcanceMax); //El tiempo de destruccion corresponde con el alcance de la bala
+        if (alcance - (transform.position - mousePosition).magnitude < alcance)
+        {
+            rb.velocity = shootDirection * velocidad;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }*/
 
-    private void disparoEnemigo()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        rb.velocity = shootDirection * velocidad;
+        if (collision.CompareTag("Pared"))
+        {
+            Destroy(this.gameObject);
+        }
+        else if (collision.CompareTag("Enemigo") && !balaEnemigo)
+        {
+            Destroy(this.gameObject, 0.01f);
+        }
+        else if(collision.CompareTag("Player") && balaEnemigo)
+        {
+            Destroy(this.gameObject, 0.01f);
+        }
     }
+
 
     /*private void disparo()
     {
@@ -92,20 +124,4 @@ public class Bala : MonoBehaviour
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.AddForce(shootDirection * velocidad, ForceMode2D.Impulse);
     }*/
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Pared"))
-        {
-            Destroy(this.gameObject);
-        }
-        else if (collision.CompareTag("Enemigo") && !balaEnemigo)
-        {
-            Destroy(this.gameObject, 0.01f);
-        }
-        else if(collision.CompareTag("Player") && balaEnemigo)
-        {
-            Destroy(this.gameObject, 0.01f);
-        }
-    }
 }

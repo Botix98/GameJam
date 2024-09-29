@@ -17,8 +17,24 @@ public class ColisoinesPersonaje : MonoBehaviour
         }
     }*/
 
+    private float timerBolso = 0f;
+
+    private void Update()
+    {
+        if (timerBolso >= 0f)
+        {
+            timerBolso -= Time.deltaTime;
+        }
+    }
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("LegiaArea"))
+        {
+            Debug.Log("SIIIIIIIIIIII");
+        }
+
         if (collision.CompareTag("ArmaSuelo"))
         {
             Debug.Log("Entras");
@@ -34,9 +50,20 @@ public class ColisoinesPersonaje : MonoBehaviour
         }
         else if (collision.CompareTag("ArmaMelee") && collision.gameObject.GetComponent<Arma>().armaEnemigo)
         {
-            this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
+            //IR AÑADIENDO LAS ARMAS DE LOS ENEMIGOS CON UN TIMER ARRIBA
+            switch (collision.gameObject.name)
+            {
+                case "Embutido (1)":
+                    if (timerBolso <= 0f)
+                    {
+                        timerBolso = collision.gameObject.GetComponent<Arma>().cadenciaArma;
 
-            comprobarVida();
+                        this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
+
+                        comprobarVida();
+                    }
+                    break;
+            }
             
         }
         else if (collision.CompareTag("Bala") && collision.gameObject.GetComponent<Bala>().balaEnemigo)

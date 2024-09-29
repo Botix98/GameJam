@@ -1,41 +1,59 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Arrojado : MonoBehaviour
 {
     public float alcance;
+    private Vector3 posInicial;
+
+    Vector2 shootDirection;
 
     Vector3 mousePosition;
-    private float velocidad = 0.02f;
+    private float velocidad = 1f;
 
     private float timer = 0f;
 
+    private Rigidbody2D rb;
+
     private void Start()
     {
-        alcance = GameObject.FindGameObjectWithTag("Player").transform.GetChild(1).GetComponent<Arma>().alcanceArma;
+        posInicial = transform.position;
 
-        mousePosition = Input.mousePosition;
-        mousePosition.z = 10f;
+        rb = GetComponent<Rigidbody2D>();
 
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0f;
+
+        shootDirection = (mousePosition - transform.position).normalized;
+
+        alcance = this.gameObject.GetComponent<Arma>().alcanceArma;
     }
 
     void Update()
-    {//NO FUNCIONA LO DEL ALCANCE MAXIMO
-        //Cuando pincho en una parte donde se haya superado el alcance maximo se tiene que lanzar al alcance maximo
-
-        transform.position = Vector2.MoveTowards(transform.position, mousePosition, velocidad);
-        trayectoria();
-
-        if (mousePosition.Equals(transform.position) && !transform.GetChild(1).gameObject.activeSelf)
+    {
+        if (Mathf.Abs((mousePosition - posInicial).magnitude) >= alcance)
         {
-            this.gameObject.tag = "LegiaArea";
-            transform.GetChild(0).gameObject.SetActive(false);
-            transform.GetChild(1).gameObject.SetActive(true);
-            timer = 5f;
-
-            Debug.Log("you garet");
+            if ((transform.position - posInicial).magnitude < alcance)
+            {
+                rb.velocity = shootDirection * velocidad;
+            }
+            else
+            {
+                activarArea();
+            }
+        }
+        else
+        {
+            if ((transform.position - posInicial).magnitude < Mathf.Abs((mousePosition - posInicial).magnitude))
+            {
+                rb.velocity = shootDirection * velocidad;
+            }
+            else
+            {
+                activarArea();
+            }
         }
 
         if (timer >= 0f)
@@ -57,14 +75,32 @@ public class Arrojado : MonoBehaviour
         }
     }
 
-    private void trayectoria()
+    private void activarArea()
     {
-        Vector3 posicion = new Vector3();
+        if (/*mousePosition.Equals(transform.position) && */!transform.GetChild(1).gameObject.activeSelf)
+        {
+            rb.velocity = Vector3.zero;
+            switch (this.gameObject.tag)
+            {
+                case "Legia":
+                    this.gameObject.tag = "LegiaArea";
+                    break;
+                case "Sirope":
+                    this.gameObject.tag = "SiropeArea";
+                    break;
+                case "Aceite":
+                    this.gameObject.tag = "AceiteArea";
+                    break;
+            }
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(true);
+            timer = 5f;
 
-        posicion = Camera.main.ScreenToWorldPoint(mousePosition);
+            Debug.Log("you garet");
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Pared"))
         {
@@ -74,5 +110,5 @@ public class Arrojado : MonoBehaviour
         {
             Destroy(this.gameObject, 0.01f);
         }
-    }
+    }*/
 }
