@@ -86,17 +86,20 @@ public class ColisoinesPersonaje : MonoBehaviour
                     }
                     break;
             }
+            //ANIMACION Y SONIDO DE GOLPEO AL PERSONAJE
         }
         else if (collision.CompareTag("Bala") && collision.gameObject.GetComponent<Bala>().balaEnemigo)
         {
             this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Bala>().damage;    
             comprobarVida();
+            //ANIMACION Y SONIDO DE GOLPEO AL PERSONAJE
         }
         if (collision.name.Contains("Carro"))
         {
             ralentizado = true;
             this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
             comprobarVida();
+            //ANIMACION Y SONIDO DE GOLPEO AL PERSONAJE
         }
 
         if (collision.CompareTag("RecuperarVida"))
@@ -110,8 +113,10 @@ public class ColisoinesPersonaje : MonoBehaviour
     {
         if (Input.GetButton("CogerObjeto") && enAreaRecuperacion)
         {
+            //ANIMACION Y SONIDO RECUPERAR VIDA
             if (area.name.Contains("2") || area.name.Contains("3"))
             {
+                //ANIMACION ZONA DE RECUPERACION DE VIDA DESACTIVADA
                 GameObject.Find("RecuperarVida 2").GetComponent<CircleCollider2D>().enabled = false;
                 GameObject.Find("RecuperarVida 3").GetComponent<CircleCollider2D>().enabled = false;
                 if (this.gameObject.GetComponent<Personaje>().vidaPersonaje >= 7)
@@ -125,7 +130,7 @@ public class ColisoinesPersonaje : MonoBehaviour
             }
             else
             {
-                Debug.Log(GameObject.Find("RecuperarVida 1"));
+                //ANIMACION ZONA DE RECUPERACION DE VIDA DESACTIVADA
                 GameObject.Find("RecuperarVida 1").GetComponent<CircleCollider2D>().enabled = false;
                 if (this.gameObject.GetComponent<Personaje>().vidaPersonaje >= 12)
                 {
@@ -144,6 +149,8 @@ public class ColisoinesPersonaje : MonoBehaviour
         if (this.gameObject.GetComponent<Personaje>().vidaPersonaje <= 0)
         {
             //GAME OVER
+
+            //ANIMACION Y SONIDO DE CUANDO MUERES
             Debug.Log("La mamastes");
             Destroy(this.gameObject);
         }

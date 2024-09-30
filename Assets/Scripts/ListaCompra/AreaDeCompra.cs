@@ -28,6 +28,8 @@ public class AreaDeCompra : MonoBehaviour
 
         if (timer >= 7f)
         {
+            //SONIDO Y ANIMACION REACTIVACION ZONAS DE RECUPERACION DE VIDA
+
             listaDeLaCompra.GetComponent<ListaCompra>().lista[indicador] = true;
             listaDeLaCompra.GetComponent<ListaCompra>().elementosRecogidos++;
 
@@ -43,6 +45,7 @@ public class AreaDeCompra : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            //ANIMACION DE LA ZONA DEL SUELO DE COMPRAR OBJETOS (DENTRO DE LA ZONA)
             enArea = true;
         }
     }
@@ -51,6 +54,7 @@ public class AreaDeCompra : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            //ANIMACION DE LA ZONA DEL SUELO DE COMPRAR OBJETOS (FUERA DE LA ZONA)
             enArea = false;
         }
     }

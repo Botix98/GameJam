@@ -19,6 +19,7 @@ public class Arma : MonoBehaviour
     {
         if (municionArma == 0)
         {
+            //ANIMIACION Y SONIDO CUANDO EL ARMA SE DESTRUYE POR FALTA DE MUNICION
             Destroy(this.gameObject, 0.5f);
         }
     }

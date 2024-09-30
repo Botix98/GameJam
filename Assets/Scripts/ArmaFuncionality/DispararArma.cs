@@ -45,6 +45,7 @@ public class DispararArma : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && timer <= 0f)
         {
+            //SONIDO LANZAR EQUIPAMIENTO
             Debug.Log("Equipamiento");
             switch (this.gameObject.transform.GetChild(1).GetComponent<Arma>().tag)
             {
@@ -66,29 +67,27 @@ public class DispararArma : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && timer <= 0f)
         {
+            //ANIMACION ATAQUE ARMA Y SONIDO ATAQUE ARMA
+
             Debug.Log("Ataque");
 
             //METER ANIMACION DE USO DE ARMA
-            //HACER UN ARMA PARA EL BOLSO Y OTRA PARA EL PERRO
+            //HACER UN ARMA PARA EL PERRO
             
             this.gameObject.transform.GetChild(1).GetComponent<BoxCollider2D>().enabled = true;
 
             timer = this.GetComponent<Personaje>().armaEquipada.GetComponent<Arma>().cadenciaArma;
             this.GetComponent<Personaje>().armaEquipada.GetComponent<Arma>().municionArma--;
-
-            //Hacer que el arma solo golpee cuando este equipada, es decir que cuando esté en el suelo no golpee a los enemigos pues el collider estara activo
         }
     }
 
-    //FALTA AÑADIR EL ALCANCE Y QUE HAGAN DAÑO EN FUNCION DE SU DAÑO
     public void dispararArma()
     {
         if (Input.GetMouseButtonDown(0) && timer <= 0f)
         {
+            //ANIMACION DISPARAR Y SONIDO DISPARO
             Debug.Log("Arma disparada");
 
-            //Que vaya en la direccion del raton
-            //Que desaparezca si choca con una pared, choca contra un enemigo o llega al rango maximo (calcular la distancia que lleva recorrida)
             balaAux = Instantiate(balaPrefab, this.GetComponent<Personaje>().armaEquipada.transform.position, this.GetComponent<Personaje>().armaEquipada.transform.rotation);
             balaAux.GetComponent<Bala>().damage = this.gameObject.transform.GetChild(1).GetComponent<Arma>().damageArma;
 

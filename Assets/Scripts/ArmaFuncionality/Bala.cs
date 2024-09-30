@@ -40,20 +40,13 @@ public class Bala : MonoBehaviour
 
             shootDirection = (mousePosition - transform.position).normalized;
 
-            //alcance = (mousePosition - transform.position).magnitude;
-
             alcanceMax = GameObject.FindGameObjectWithTag("Player").transform.GetChild(1).GetComponent<Arma>().alcanceArma;
-
-            //if (alcance > alcanceMax)
-            //{
-            //    alcance = alcanceMax;
-            //}
         }
         else
         {
             shootDirection = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
 
-            alcanceMax = GameObject.FindGameObjectWithTag("Enemigo").transform.GetChild(1).GetComponent<Arma>().alcanceArma;
+            alcanceMax = GameObject.FindGameObjectWithTag("Enemigo").transform.GetChild(1).GetComponent<Arma>().alcanceArma * 2; //Lo multiplico por 2 para que la bala llegue mas lejos del alcance de disparo del enemigo
         }
     }
 
@@ -65,6 +58,8 @@ public class Bala : MonoBehaviour
         }
         else
         {
+            //ANIMACION DESTRUCCION BALA Y SONIDO
+
             Destroy(this.gameObject);
         }
     }
@@ -90,14 +85,17 @@ public class Bala : MonoBehaviour
     {
         if (collision.CompareTag("Pared"))
         {
+            //ANIMACION DESTRUCCION BALA Y SONIDO
             Destroy(this.gameObject);
         }
         else if (collision.CompareTag("Enemigo") && !balaEnemigo)
         {
+            //ANIMACION DESTRUCCION BALA Y SONIDO
             Destroy(this.gameObject, 0.01f);
         }
         else if(collision.CompareTag("Player") && balaEnemigo)
         {
+            //ANIMACION DESTRUCCION BALA Y SONIDO
             Destroy(this.gameObject, 0.01f);
         }
     }

@@ -58,6 +58,7 @@ public class SpawnEnemigos : MonoBehaviour
     {
         if (this.gameObject.name.Equals("SpawnMelee"))
         {
+            //ANIMACION SPAWN ENEMIGO
             Instantiate(meleePrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
         }
     }
@@ -66,6 +67,7 @@ public class SpawnEnemigos : MonoBehaviour
     {
         if (this.gameObject.name.Equals("SpawnDistancia"))
         {
+            //ANIMACION SPAWN ENEMIGO
             Instantiate(distanciaPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
         }
     }
@@ -74,6 +76,7 @@ public class SpawnEnemigos : MonoBehaviour
     {
         if (this.gameObject.name.Equals("SpawnAbuela"))
         {
+            //ANIMACION SPAWN ENEMIGO
             Instantiate(abuelaPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
         }
     }

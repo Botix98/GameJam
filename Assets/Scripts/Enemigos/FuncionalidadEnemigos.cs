@@ -75,6 +75,7 @@ public class FuncionalidadEnemigos : MonoBehaviour
     {
         if (vidaEnemigo <= 0)
         {
+            //SONIDO Y ANIMACION MURTE ENEMIGO
             Destroy(this.gameObject);
         }
     }
@@ -83,6 +84,7 @@ public class FuncionalidadEnemigos : MonoBehaviour
     {
         if (GetComponent<ColisionEnemigos>().legia && timerLegia <= 0f)
         {
+            //SONIDO Y ANIMACION ENEMIGO GOLPEADO
             vidaEnemigo -= 2;
             timerLegia = 1f;
         }
@@ -92,6 +94,7 @@ public class FuncionalidadEnemigos : MonoBehaviour
     {
         if (GetComponent<ColisionEnemigos>().aceite)
         {
+            //SONIDO Y ANIMACION ENEMIGO RALENTIZADO
             this.gameObject.GetComponent<AIPath>().maxSpeed = velocidadEnemigo * 0.5f;
         }
         else if (!GetComponent<ColisionEnemigos>().legia && !GetComponent<ColisionEnemigos>().sirope)
@@ -104,6 +107,7 @@ public class FuncionalidadEnemigos : MonoBehaviour
     {
         if (GetComponent<ColisionEnemigos>().sirope)
         {
+            //SONIDO Y ANIMACION ENEMIGO RALENTIZADO
             this.gameObject.GetComponent<AIPath>().maxSpeed = 0f;
         }
         else if (!GetComponent<ColisionEnemigos>().aceite && !GetComponent<ColisionEnemigos>().legia)
@@ -117,6 +121,8 @@ public class FuncionalidadEnemigos : MonoBehaviour
         if (timer <= 0f && Mathf.Abs((jugador.transform.position - this.gameObject.transform.position).magnitude) < 5f)
         {
             Debug.Log("Carro disparado");
+
+            //SONIDO CARRO LANZADO
 
             carroDisparado = true;
 
@@ -141,6 +147,8 @@ public class FuncionalidadEnemigos : MonoBehaviour
         if (timer <= 0f && Mathf.Abs((jugador.transform.position - this.gameObject.transform.position).magnitude) < this.gameObject.transform.GetChild(1).GetComponent<Arma>().alcanceArma)
         {
             Debug.Log("Arma disparada");
+
+            //SONIDO Y ANIMACION BALA DISPARADA
 
             //Que desaparezca si choca con una pared, choca contra un enemigo o llega al rango maximo (calcular la distancia que lleva recorrida)
             balaAux = Instantiate(balaPrefab, armaEnemigo.transform.position, armaEnemigo.transform.rotation);

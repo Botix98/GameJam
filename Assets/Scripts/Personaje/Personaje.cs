@@ -52,6 +52,8 @@ public class Personaje : MonoBehaviour
     {
         if (Input.GetButtonDown("CogerObjeto") && colisiones.enArea)
         {
+            //ANIMACION Y SONIDO COGER ARMA
+
             Destroy(armaEquipada);
             armaEquipada = Instantiate(GameObject.Find(GetComponent<ColisoinesPersonaje>().nombreArma)); //CUIDADO CON EL FIND
 
@@ -61,6 +63,7 @@ public class Personaje : MonoBehaviour
             }
             else if (armaEquipada.GetComponent<Arma>().armaDistancia)
             {
+                //DESACTIVAR EL COLLIDER DEL ARMA A DISTANCIA??
                 armaEquipada.tag = "ArmaDistancia";
             }
             else 
@@ -89,9 +92,9 @@ public class Personaje : MonoBehaviour
 
         if (Input.GetKeyDown("space"))// && timer <= 0f)
         {
+            //ANIMACION Y SONIDO DEL DASH
+
             flashActivo = true;
-            //timer = 5f;
-            //moveSpeed = Mathf.Lerp(moveSpeed, maxMoveSpeed, 0.2f);
         }
         
         
@@ -108,20 +111,8 @@ public class Personaje : MonoBehaviour
             moveSpeed = Mathf.Lerp(moveSpeed, minMoveSpeed, 0.1f);
         }
 
+        //ANIMACION Y SONIDO DE MOVERSE
 
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-
-        // Movemos el personaje
-        //rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-
-        //correr();
-    }
-
-    private void correr()
-    {
-        if (Input.GetKey("space"))
-        {
-            rb.AddForce(movement, ForceMode2D.Force);
-        }
     }
 }

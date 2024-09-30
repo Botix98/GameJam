@@ -56,19 +56,28 @@ public class Arrojado : MonoBehaviour
             }
         }
 
-        if (timer >= 0f)
+        if (timer > 0f)
         {
             timer -= Time.deltaTime;
         }
 
         if (timer <= 0f && transform.GetChild(1).gameObject.activeSelf)
         {
-            if (this.gameObject.name.Contains("Legia"))
+            if (this.gameObject.name.Contains("Aceite")  || this.gameObject.name.Contains("Sirope"))
             {
                 foreach (var enemigo in GameObject.FindGameObjectsWithTag("Enemigo"))
                 {
                     enemigo.GetComponent<ColisionEnemigos>().legia = false;
                 }
+            }
+
+            if (this.gameObject.name.Contains("Aceite"))
+            {
+                //ANIMACION Y SONIDO DESAPARECER AREA ACEITE
+            }
+            else if (this.gameObject.name.Contains("Sirope"))
+            {
+                //ANIMACION Y SONIDO DESAPARECER AREA SIROPE
             }
 
             Destroy(this.gameObject);
@@ -83,12 +92,15 @@ public class Arrojado : MonoBehaviour
             switch (this.gameObject.tag)
             {
                 case "Legia":
+                    //ANIMACION Y SONIDO LEGIA CAYENDO Y CREANDO AREA
                     this.gameObject.tag = "LegiaArea";
                     break;
                 case "Sirope":
+                    //ANIMACION Y SONIDO SIROPE CAYENDO Y CREANDO AREA
                     this.gameObject.tag = "SiropeArea";
                     break;
                 case "Aceite":
+                    //ANIMACION Y SONIDO SIROPE CAYENDO Y CREANDO AREA
                     this.gameObject.tag = "AceiteArea";
                     break;
             }
