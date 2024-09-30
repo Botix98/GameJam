@@ -11,15 +11,20 @@ public class FuncionalidadEnemigos : MonoBehaviour
     public int vidaEnemigo = 3;
     public float velocidadEnemigo;
     private bool carroDisparado = false;
+    private bool perroSoltado = false;
 
     public GameObject jugador;
 
     public GameObject balaAux;
+    public GameObject carroAux;
+    public GameObject bolso;
+    public GameObject perro;
+
     public GameObject balaPrefab;
     public GameObject carroPrefab;
-    public GameObject carroAux;
     public GameObject bolsoPrefab;
-    public GameObject bolso;
+    public GameObject perroPrefab;
+    
 
     private float timer = 0f;
 
@@ -57,6 +62,11 @@ public class FuncionalidadEnemigos : MonoBehaviour
             dispararCarro();
         }
 
+        if (this.gameObject.name.Contains("Ciego") && !perroSoltado)
+        {
+            soltarPerro();
+        }
+
         if (timer >= 0f)
         {
             timer -= Time.deltaTime;
@@ -70,6 +80,20 @@ public class FuncionalidadEnemigos : MonoBehaviour
         //float step = velocidadEnemigo * Time.deltaTime;
         //transform.position = Vector2.MoveTowards(transform.position, target.transform.position, step);
     }
+
+    private void soltarPerro()
+    {
+        if (timer <= 0f && Mathf.Abs((jugador.transform.position - this.gameObject.transform.position).magnitude) < 5f)
+        {
+            Debug.Log("Perro soltado");
+
+            //SONIDO PERRO SOLTADO
+            perroSoltado = true;
+            perro = Instantiate(perroPrefab, transform.position, transform.rotation);
+            this.gameObject.GetComponent<AIPath>().enabled = false;
+        }
+    }
+
 
     private void comprobarVida()
     {

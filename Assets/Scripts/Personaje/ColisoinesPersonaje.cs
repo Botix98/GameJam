@@ -23,6 +23,7 @@ public class ColisoinesPersonaje : MonoBehaviour
 
     private float timerEmbutido = 0f;
     private float timerBolso = 0f;
+    private float timerPerro = 0f;
 
     private void Update()
     {
@@ -34,6 +35,11 @@ public class ColisoinesPersonaje : MonoBehaviour
         if (timerBolso >= 0f)
         {
             timerBolso -= Time.deltaTime;
+        }
+
+        if (timerPerro >= 0f)
+        {
+            timerPerro -= Time.deltaTime;
         }
 
         if (ralentizado)
@@ -85,6 +91,14 @@ public class ColisoinesPersonaje : MonoBehaviour
                         comprobarVida();
                     }
                     break;
+                case "PerroArma":
+                    if (timerPerro <= 0f)
+                    {
+                        timerPerro = collision.gameObject.GetComponent<Arma>().cadenciaArma;
+                        this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
+                        comprobarVida();
+                    }
+                    break;
             }
             //ANIMACION Y SONIDO DE GOLPEO AL PERSONAJE
         }
@@ -107,6 +121,18 @@ public class ColisoinesPersonaje : MonoBehaviour
             enAreaRecuperacion = true;
             area = collision.gameObject;
         }
+
+        /*Debug.Log(collision.name);
+        if (collision.name.Contains("Perro"))
+        {
+            Debug.Log("Colision con el perro");
+            if (timerPerro <= 0f)
+            {
+                timerPerro = collision.gameObject.GetComponent<Arma>().cadenciaArma;
+                this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
+                comprobarVida();
+            }
+        }*/
     }
 
     private void recuperacion()

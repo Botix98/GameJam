@@ -7,10 +7,12 @@ public class SpawnEnemigos : MonoBehaviour
     public GameObject meleePrefab;
     public GameObject distanciaPrefab;
     public GameObject abuelaPrefab;
+    public GameObject ciegoPrefab;
 
     private float timerMelee = 0f;
     private float timerDistancia = 0f;
     private float timerAbuela = 0f;
+    private float timerCiego = 0f;
 
     private ListaCompra listaCompra;
 
@@ -52,6 +54,16 @@ public class SpawnEnemigos : MonoBehaviour
             timerAbuela -= Time.deltaTime;
         }
 
+        if (timerCiego <= 0f)
+        {
+            ciego();
+            timerCiego = 10f - listaCompra.elementosRecogidos * 2; //PONER AQUI EL TIEMPO DE SPAWN
+        }
+        if (timerCiego > 0f)
+        {
+            timerCiego -= Time.deltaTime;
+        }
+
     }
 
     private void enemigoMelee()
@@ -78,6 +90,15 @@ public class SpawnEnemigos : MonoBehaviour
         {
             //ANIMACION SPAWN ENEMIGO
             Instantiate(abuelaPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        }
+    }
+    private void ciego()
+    {
+        Debug.Log("CIEGO");
+        if (this.gameObject.name.Equals("SpawnCiego"))
+        {
+            //ANIMACION SPAWN ENEMIGO
+            Instantiate(ciegoPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
         }
     }
 }
