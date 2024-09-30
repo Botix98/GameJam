@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alcanceMax: 0
   damage: 0
-  balaEnemigo: 0
+  balaEnemigo: 1
 --- !u!50 &3683095266532639740
 Rigidbody2D:
   serializedVersion: 4

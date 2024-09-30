@@ -48,9 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   municionArma: 20
   nombreArma: Frutas
-  alcanceArma: 3
+  alcanceArma: 5
   damageArma: 1
-  cadenciaArma: 1
+  cadenciaArma: 0.75
   areaArma: 0
   valorArea: 0
   tiempoAreaArma: 0

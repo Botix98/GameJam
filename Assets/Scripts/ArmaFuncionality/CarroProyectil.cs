@@ -36,8 +36,8 @@ public class CarroProyectil : MonoBehaviour
         }
         else
         {
-            //ANIMACION DESTRUCCION DEL CARRO Y SONIDO
-            Destroy(this.gameObject);
+            //ANIMACION DESTRUCCION DEL CARRO
+            Destroy(this.gameObject, 0.3f);
         }
     }
 
@@ -46,12 +46,17 @@ public class CarroProyectil : MonoBehaviour
         if (collision.CompareTag("Pared"))
         {
             //ANIMACION DESTRUCCION DEL CARRO Y SONIDO
-            Destroy(this.gameObject);
+
+            this.gameObject.GetComponent<SonidosCarro>().carroChocando();
+
+            Destroy(this.gameObject, 0.3f);
         }
         else if (collision.CompareTag("Player") && balaEnemigo)
         {
             //ANIMACION DESTRUCCION DEL CARRO Y SONIDO
-            Destroy(this.gameObject, 0.01f);
+            this.gameObject.GetComponent<SonidosCarro>().carroChocando();
+
+            Destroy(this.gameObject, 0.3f);
         }
     }
 }

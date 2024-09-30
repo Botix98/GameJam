@@ -9,6 +9,11 @@ public class AreaDeCompra : MonoBehaviour
     public int indicador;
     public GameObject listaDeLaCompra;
 
+    public AudioSource sonidoComprar;
+    public AudioClip sonido;
+
+    private bool activar = true;
+
     // Update is called once per frame
     void Update()
     {
@@ -28,16 +33,27 @@ public class AreaDeCompra : MonoBehaviour
 
         if (timer >= 7f)
         {
-            //SONIDO Y ANIMACION REACTIVACION ZONAS DE RECUPERACION DE VIDA
 
-            listaDeLaCompra.GetComponent<ListaCompra>().lista[indicador] = true;
-            listaDeLaCompra.GetComponent<ListaCompra>().elementosRecogidos++;
+            //ANIMACION Y SONIDO ELEMENTO COMPRADO
+            if (activar)
+            {
+                listaDeLaCompra.GetComponent<ListaCompra>().lista[indicador] = true;
+                listaDeLaCompra.GetComponent<ListaCompra>().elementosRecogidos++;
+                activar = false;
+
+                if (!(listaDeLaCompra.GetComponent<ListaCompra>().elementosRecogidos == 4))
+                {
+                    sonidoComprar.PlayOneShot(sonido);
+                }
+            }
+
+            //SONIDO Y ANIMACION REACTIVACION ZONAS DE RECUPERACION DE VIDA
 
             GameObject.Find("RecuperarVida 1").GetComponent<CircleCollider2D>().enabled = true;
             GameObject.Find("RecuperarVida 2").GetComponent<CircleCollider2D>().enabled = true;
             GameObject.Find("RecuperarVida 3").GetComponent<CircleCollider2D>().enabled = true;
 
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 1f);
         }
     }
 

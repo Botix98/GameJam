@@ -50,11 +50,12 @@ MonoBehaviour:
   nombreArma: Jamon
   alcanceArma: -1
   damageArma: 6
-  cadenciaArma: 3
+  cadenciaArma: 1.5
   areaArma: 0
   valorArea: 0
   tiempoAreaArma: 0
   armaDistancia: 0
+  armaEnemigo: 0
 --- !u!61 &6030795194873188004
 BoxCollider2D:
   m_ObjectHideFlags: 0

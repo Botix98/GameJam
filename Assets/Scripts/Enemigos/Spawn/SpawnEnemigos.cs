@@ -8,11 +8,15 @@ public class SpawnEnemigos : MonoBehaviour
     public GameObject distanciaPrefab;
     public GameObject abuelaPrefab;
     public GameObject ciegoPrefab;
+    public GameObject carniceroPrefab;
+    public GameObject reponedorPrefab;
 
     private float timerMelee = 0f;
     private float timerDistancia = 0f;
     private float timerAbuela = 0f;
     private float timerCiego = 0f;
+    private float timerCarnicero = 0f;
+    private float timerReponedor = 0f;
 
     private ListaCompra listaCompra;
 
@@ -64,6 +68,44 @@ public class SpawnEnemigos : MonoBehaviour
             timerCiego -= Time.deltaTime;
         }
 
+        if (timerCarnicero <= 0f)
+        {
+            carnicero();
+            timerCarnicero = 10f - listaCompra.elementosRecogidos * 2; //PONER AQUI EL TIEMPO DE SPAWN
+        }
+        if (timerCarnicero > 0f)
+        {
+            timerCarnicero -= Time.deltaTime;
+        }
+
+        if (timerReponedor <= 0f)
+        {
+            reponedor();
+            timerReponedor = 10f - listaCompra.elementosRecogidos * 2; //PONER AQUI EL TIEMPO DE SPAWN
+        }
+        if (timerReponedor > 0f)
+        {
+            timerReponedor -= Time.deltaTime;
+        }
+
+    }
+
+    private void reponedor()
+    {
+        if (this.gameObject.name.Equals("SpawnReponedor"))
+        {
+            //ANIMACION SPAWN ENEMIGO
+            Instantiate(reponedorPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        }
+    }
+
+    private void carnicero()
+    {
+        if (this.gameObject.name.Equals("SpawnCarnicero"))
+        {
+            //ANIMACION SPAWN ENEMIGO
+            Instantiate(carniceroPrefab, this.gameObject.transform.position, this.gameObject.transform.rotation);
+        }
     }
 
     private void enemigoMelee()

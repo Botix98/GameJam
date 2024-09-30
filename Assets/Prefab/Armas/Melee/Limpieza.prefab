@@ -134,11 +134,12 @@ MonoBehaviour:
   nombreArma: Limpieza
   alcanceArma: -1
   damageArma: 4
-  cadenciaArma: 2
+  cadenciaArma: 1
   areaArma: 0
   valorArea: 0
   tiempoAreaArma: 0
   armaDistancia: 0
+  armaEnemigo: 0
 --- !u!61 &7133440380550106486
 BoxCollider2D:
   m_ObjectHideFlags: 0

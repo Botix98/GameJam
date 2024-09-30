@@ -134,7 +134,7 @@ MonoBehaviour:
   nombreArma: Embutido
   alcanceArma: -1
   damageArma: 2
-  cadenciaArma: 1
+  cadenciaArma: 0.75
   areaArma: 0
   valorArea: 0
   tiempoAreaArma: 0

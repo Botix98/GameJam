@@ -54,6 +54,7 @@ public class FuncionalidadEnemigos : MonoBehaviour
 
         if (armaEnemigo.CompareTag("ArmaDistancia") && !this.gameObject.name.Contains("ViejaCarroYBolso"))
         {
+            Debug.Log("Arma a distancia");
             dispararArma();
         }
 
@@ -100,7 +101,7 @@ public class FuncionalidadEnemigos : MonoBehaviour
         if (vidaEnemigo <= 0)
         {
             //SONIDO Y ANIMACION MURTE ENEMIGO
-            Destroy(this.gameObject);
+            Destroy(this.gameObject, 0.1f);
         }
     }
 
@@ -109,6 +110,28 @@ public class FuncionalidadEnemigos : MonoBehaviour
         if (GetComponent<ColisionEnemigos>().legia && timerLegia <= 0f)
         {
             //SONIDO Y ANIMACION ENEMIGO GOLPEADO
+
+            if (this.gameObject.name.Contains("Perro"))
+            {
+                this.gameObject.GetComponent<SonidosPerro>().dañoPerro();
+            }
+            else if (this.gameObject.name.Contains("Vieja"))
+            {
+                this.gameObject.GetComponent<SonidosAbuela>().dañoAbuela();
+            }
+            else if (this.gameObject.name.Contains("Reponedor"))
+            {
+                this.gameObject.GetComponent<SonidosReponedor>().dañoReponedor();
+            }
+            else if (this.gameObject.name.Contains("Ciego"))
+            {
+                this.gameObject.GetComponent<SonidosCiego>().dañoCiego();
+            }
+            else if (this.gameObject.name.Contains("Carnicero"))
+            {
+                this.gameObject.GetComponent<SonidosCarnicero>().dañoCarnicero();
+            }
+
             vidaEnemigo -= 2;
             timerLegia = 1f;
         }
@@ -146,7 +169,7 @@ public class FuncionalidadEnemigos : MonoBehaviour
         {
             Debug.Log("Carro disparado");
 
-            //SONIDO CARRO LANZADO
+            //SONIDO CARRO LANZADO (empieza a sonar cuando se crea el carro)
 
             carroDisparado = true;
 

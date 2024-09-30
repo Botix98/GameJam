@@ -25,6 +25,13 @@ public class ColisoinesPersonaje : MonoBehaviour
     private float timerBolso = 0f;
     private float timerPerro = 0f;
 
+    private float timerInvulnerabilidad = 0f;
+    private bool invulnerabilidad = false;
+
+    public AudioClip sonidoRecuperarVida;
+    public AudioClip sonidoGolpePersonaje1;
+    public AudioClip sonidoGolpePersonaje2;
+
     private void Update()
     {
         if (timerEmbutido >= 0f)
@@ -40,6 +47,16 @@ public class ColisoinesPersonaje : MonoBehaviour
         if (timerPerro >= 0f)
         {
             timerPerro -= Time.deltaTime;
+        }
+
+        if(timerInvulnerabilidad >= 0f)
+        {
+            timerInvulnerabilidad -= Time.deltaTime;
+            invulnerabilidad = true;
+        }
+        else
+        {
+            invulnerabilidad = false;
         }
 
         if (ralentizado)
@@ -70,50 +87,62 @@ public class ColisoinesPersonaje : MonoBehaviour
 
             //personaje.cogerArma();
         }
-        else if (collision.CompareTag("ArmaMelee") && collision.gameObject.GetComponent<Arma>().armaEnemigo)
+        
+        if (!invulnerabilidad)
         {
-            //IR AÑADIENDO LAS ARMAS DE LOS ENEMIGOS CON UN TIMER ARRIBA
-            switch (collision.gameObject.name)
+            if (collision.CompareTag("ArmaMelee") && collision.gameObject.GetComponent<Arma>().armaEnemigo)
             {
-                case "Embutido (1)":
-                    if (timerEmbutido <= 0f)
-                    {
-                        timerEmbutido = collision.gameObject.GetComponent<Arma>().cadenciaArma;
-                        this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
-                        comprobarVida();
-                    }
-                    break;
-                case "Bolso(Clone)":
-                    if (timerBolso <= 0f)
-                    {
-                        timerBolso = collision.gameObject.GetComponent<Arma>().cadenciaArma;
-                        this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
-                        comprobarVida();
-                    }
-                    break;
-                case "PerroArma":
-                    if (timerPerro <= 0f)
-                    {
-                        timerPerro = collision.gameObject.GetComponent<Arma>().cadenciaArma;
-                        this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
-                        comprobarVida();
-                    }
-                    break;
+                //IR AÑADIENDO LAS ARMAS DE LOS ENEMIGOS CON UN TIMER ARRIBA
+                switch (collision.gameObject.name)
+                {
+                    case "Embutido (1)":
+                        if (timerEmbutido <= 0f)
+                        {
+                            timerEmbutido = collision.gameObject.GetComponent<Arma>().cadenciaArma;
+                            this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
+                            comprobarVida();
+                        }
+                        break;
+                    case "Bolso(Clone)":
+                        if (timerBolso <= 0f)
+                        {
+                            timerBolso = collision.gameObject.GetComponent<Arma>().cadenciaArma;
+                            this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
+                            comprobarVida();
+                        }
+                        break;
+                    case "PerroArma":
+                        if (timerPerro <= 0f)
+                        {
+                            timerPerro = collision.gameObject.GetComponent<Arma>().cadenciaArma;
+                            this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
+                            comprobarVida();
+                        }
+                        break;
+                }
+                timerInvulnerabilidad = 0.5f;
+                //ANIMACION Y SONIDO DE GOLPEO AL PERSONAJE
+                sonidoGolpePersonaje();
             }
-            //ANIMACION Y SONIDO DE GOLPEO AL PERSONAJE
-        }
-        else if (collision.CompareTag("Bala") && collision.gameObject.GetComponent<Bala>().balaEnemigo)
-        {
-            this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Bala>().damage;    
-            comprobarVida();
-            //ANIMACION Y SONIDO DE GOLPEO AL PERSONAJE
-        }
-        if (collision.name.Contains("Carro"))
-        {
-            ralentizado = true;
-            this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
-            comprobarVida();
-            //ANIMACION Y SONIDO DE GOLPEO AL PERSONAJE
+            else if (collision.CompareTag("Bala") && collision.gameObject.GetComponent<Bala>().balaEnemigo)
+            {
+                this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Bala>().damage;
+                comprobarVida();
+
+                timerInvulnerabilidad = 0.5f;
+                //ANIMACION Y SONIDO DE GOLPEO AL PERSONAJE
+                sonidoGolpePersonaje();
+            }
+            if (collision.name.Contains("Carro") && !collision.name.Contains("Vieja"))
+            {
+                ralentizado = true;
+                this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
+                comprobarVida();
+
+                timerInvulnerabilidad = 0.5f;
+                //ANIMACION Y SONIDO DE GOLPEO AL PERSONAJE
+                sonidoGolpePersonaje();
+            }
         }
 
         if (collision.CompareTag("RecuperarVida"))
@@ -135,11 +164,28 @@ public class ColisoinesPersonaje : MonoBehaviour
         }*/
     }
 
+    private void sonidoGolpePersonaje()
+    {
+        int n = Random.Range(0,2);
+
+        if (n == 0)
+        {
+            this.gameObject.GetComponent<Personaje>().sonidosPersonaje.PlayOneShot(sonidoGolpePersonaje1);
+        }
+        else
+        {
+            this.gameObject.GetComponent<Personaje>().sonidosPersonaje.PlayOneShot(sonidoGolpePersonaje2);
+        }
+    }
+
     private void recuperacion()
     {
         if (Input.GetButton("CogerObjeto") && enAreaRecuperacion)
         {
             //ANIMACION Y SONIDO RECUPERAR VIDA
+
+            this.gameObject.GetComponent<Personaje>().sonidosPersonaje.PlayOneShot(sonidoRecuperarVida);
+
             if (area.name.Contains("2") || area.name.Contains("3"))
             {
                 //ANIMACION ZONA DE RECUPERACION DE VIDA DESACTIVADA

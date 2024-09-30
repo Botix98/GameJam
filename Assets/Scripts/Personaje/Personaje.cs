@@ -30,6 +30,16 @@ public class Personaje : MonoBehaviour
 
     private float timer = 0f;
 
+    public AudioSource sonidosPersonaje;
+
+    public AudioClip pasosPersonaje;
+    public AudioClip cogerObjeto;
+    //public AudioClip respiracionPersonaje;
+
+    private float timerPasos = 0f;
+
+    private bool paso = false;
+
     // Start se llama antes del primer frame
     void Start()
     {
@@ -39,6 +49,11 @@ public class Personaje : MonoBehaviour
     // Update se llama una vez por frame
     void Update()
     {
+        if (timerPasos > 0f)
+        {
+            timerPasos -= Time.deltaTime;
+        }
+
         if (timer > 0f)
         {
             timer -= Time.deltaTime;
@@ -46,13 +61,37 @@ public class Personaje : MonoBehaviour
 
         movimientoPersonaje();
         cogerArma();
+        //personajeRespirando();
     }
+
+    //RESPIRACION PERSONAJE
+    /*private void personajeRespirando()
+    {
+            if (timerPasos <= 0f)
+            {
+                if (paso)
+                {
+                    paso = false;
+                    sonidosPersonaje.pitch = 1.1f;
+                }
+                else
+                {
+                    paso = true;
+                    sonidosPersonaje.pitch = 1f;
+                }
+
+                timerPasos = 0.3f;
+                sonidosPersonaje.PlayOneShot(respiracionPersonaje);
+            }
+    }*/
 
     public void cogerArma()
     {
         if (Input.GetButtonDown("CogerObjeto") && colisiones.enArea)
         {
             //ANIMACION Y SONIDO COGER ARMA
+
+            sonidosPersonaje.PlayOneShot(cogerObjeto);
 
             Destroy(armaEquipada);
             armaEquipada = Instantiate(GameObject.Find(GetComponent<ColisoinesPersonaje>().nombreArma)); //CUIDADO CON EL FIND
@@ -112,6 +151,26 @@ public class Personaje : MonoBehaviour
         }
 
         //ANIMACION Y SONIDO DE MOVERSE
+
+        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        {
+            if (timerPasos <= 0f)
+            {
+                if (paso)
+                {
+                    paso = false;
+                    sonidosPersonaje.pitch = 1.1f;
+                }
+                else
+                {
+                    paso = true;
+                    sonidosPersonaje.pitch = 1f;
+                }
+
+                timerPasos = 0.3f;
+                sonidosPersonaje.PlayOneShot(pasosPersonaje);
+            }
+        }
 
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
