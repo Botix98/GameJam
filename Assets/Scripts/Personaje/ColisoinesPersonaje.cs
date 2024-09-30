@@ -8,7 +8,7 @@ public class ColisoinesPersonaje : MonoBehaviour
     public bool enArea;
     private bool enAreaRecuperacion;
     public string nombreArma;
-    private bool ralentizado = false;
+    public bool ralentizado = false;
 
     private GameObject area;
 
@@ -24,6 +24,7 @@ public class ColisoinesPersonaje : MonoBehaviour
     private float timerEmbutido = 0f;
     private float timerBolso = 0f;
     private float timerPerro = 0f;
+    private float timerRalentizado = 0f;
 
     private float timerInvulnerabilidad = 0f;
     private bool invulnerabilidad = false;
@@ -49,6 +50,11 @@ public class ColisoinesPersonaje : MonoBehaviour
             timerPerro -= Time.deltaTime;
         }
 
+        if (timerRalentizado >= 0f)
+        {
+            timerRalentizado -= Time.deltaTime;
+        }
+
         if(timerInvulnerabilidad >= 0f)
         {
             timerInvulnerabilidad -= Time.deltaTime;
@@ -59,13 +65,9 @@ public class ColisoinesPersonaje : MonoBehaviour
             invulnerabilidad = false;
         }
 
-        if (ralentizado)
+        if (timerRalentizado < 0f)
         {
-            this.gameObject.GetComponent<Personaje>().moveSpeed = 2.5f;
-        }
-        else
-        {
-            this.gameObject.GetComponent<Personaje>().moveSpeed = 5f;
+            ralentizado = false;
         }
 
         recuperacion();
@@ -136,6 +138,8 @@ public class ColisoinesPersonaje : MonoBehaviour
             if (collision.name.Contains("Carro") && !collision.name.Contains("Vieja"))
             {
                 ralentizado = true;
+                timerRalentizado = 3f;
+
                 this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
                 comprobarVida();
 
@@ -149,6 +153,10 @@ public class ColisoinesPersonaje : MonoBehaviour
         {
             enAreaRecuperacion = true;
             area = collision.gameObject;
+        }
+
+        if (collision.name.Equals("Victoria")){
+            GameObject.Find("Musica").GetComponent<MusicaFondo>().victoriaBool = true;
         }
 
         /*Debug.Log(collision.name);

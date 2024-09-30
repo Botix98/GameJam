@@ -171,4 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 590f1d3edd248554fa525f007626f81a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alcance: 0
+  alcanceMax: 0
+  damage: 0
+  sonidoBala: {fileID: 8300000, guid: 2b11df3c57aca174889a3b941c7f77fb, type: 3}
+  balaEnemigo: 0

@@ -13,6 +13,9 @@ public class DispararArma : MonoBehaviour
     public GameObject lejiaPrefab;
     public GameObject siropePrefab;
 
+    public AudioClip sonidoLanzarEquipamiento;
+    public AudioClip sonidoAtaqueMelee;
+
     public GameObject balaAux;
 
     // Update is called once per frame
@@ -46,6 +49,9 @@ public class DispararArma : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && timer <= 0f)
         {
             //SONIDO LANZAR EQUIPAMIENTO
+
+            GameObject.Find("SonidoManager").GetComponent<AudioSource>().PlayOneShot(sonidoLanzarEquipamiento);
+
             Debug.Log("Equipamiento");
             switch (this.gameObject.transform.GetChild(1).GetComponent<Arma>().tag)
             {
@@ -68,6 +74,8 @@ public class DispararArma : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && timer <= 0f)
         {
             //ANIMACION ATAQUE ARMA Y SONIDO ATAQUE ARMA
+
+            GameObject.Find("SonidoManager").GetComponent<AudioSource>().PlayOneShot(sonidoAtaqueMelee);
 
             Debug.Log("Ataque");
 

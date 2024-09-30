@@ -12,8 +12,8 @@ public class SonidosCarnicero : MonoBehaviour
 
     private void Start()
     {
-        fuenteAndar.clip = andarCarnicero;
-        fuenteAndar.Play();
+        //fuenteAndar.clip = andarCarnicero;
+        //fuenteAndar.Play();
     }
 
     public void dañoCarnicero()

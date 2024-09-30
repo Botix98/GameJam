@@ -9,7 +9,7 @@ public class Personaje : MonoBehaviour
     public float maxMoveSpeed = 20f;
     public float minMoveSpeed = 5f;
 
-    private bool flashActivo = false;
+    public bool flashActivo = false;
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -29,6 +29,7 @@ public class Personaje : MonoBehaviour
     public int vidaPersonaje = 15;
 
     private float timer = 0f;
+    public float timerFlash = 0f;
 
     public AudioSource sonidosPersonaje;
 
@@ -57,6 +58,11 @@ public class Personaje : MonoBehaviour
         if (timer > 0f)
         {
             timer -= Time.deltaTime;
+        }
+
+        if (timerFlash > 0f)
+        {
+            timerFlash -= Time.deltaTime;
         }
 
         movimientoPersonaje();
@@ -95,6 +101,7 @@ public class Personaje : MonoBehaviour
 
             Destroy(armaEquipada);
             armaEquipada = Instantiate(GameObject.Find(GetComponent<ColisoinesPersonaje>().nombreArma)); //CUIDADO CON EL FIND
+            armaEquipada.transform.position = this.transform.position;
 
             if (armaEquipada.GetComponent<Arma>().areaArma)
             {
@@ -135,15 +142,19 @@ public class Personaje : MonoBehaviour
 
             flashActivo = true;
         }
-        
-        
-        if (flashActivo)
+
+        if (flashActivo && timerFlash <= 0f)
         {
-            moveSpeed = Mathf.Lerp(moveSpeed, maxMoveSpeed, 0.2f);
+            moveSpeed = Mathf.Lerp(moveSpeed, maxMoveSpeed, 0.05f);
             if (Mathf.Round(moveSpeed) == maxMoveSpeed)
             {
+                timerFlash = 5f;
                 flashActivo = false;
             }
+        }
+        else if (this.GetComponent<ColisoinesPersonaje>().ralentizado)
+        {
+            moveSpeed = 2.5f;
         }
         else
         {
@@ -152,7 +163,7 @@ public class Personaje : MonoBehaviour
 
         //ANIMACION Y SONIDO DE MOVERSE
 
-        if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
+        /*if (Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0)
         {
             if (timerPasos <= 0f)
             {
@@ -170,7 +181,7 @@ public class Personaje : MonoBehaviour
                 timerPasos = 0.3f;
                 sonidosPersonaje.PlayOneShot(pasosPersonaje);
             }
-        }
+        }*/
 
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }

@@ -73,11 +73,11 @@ public class Arrojado : MonoBehaviour
 
             if (this.gameObject.name.Contains("Aceite"))
             {
-                //ANIMACION Y SONIDO DESAPARECER AREA ACEITE
+                //ANIMACION DESAPARECER ACEITE
             }
             else if (this.gameObject.name.Contains("Sirope"))
             {
-                //ANIMACION Y SONIDO DESAPARECER AREA SIROPE
+                //ANIMACION DESAPARECER SIROPE
             }
 
             Destroy(this.gameObject);
@@ -86,29 +86,31 @@ public class Arrojado : MonoBehaviour
 
     private void activarArea()
     {
-        if (/*mousePosition.Equals(transform.position) && */!transform.GetChild(1).gameObject.activeSelf)
+        if (!transform.GetChild(1).gameObject.activeSelf)
         {
             rb.velocity = Vector3.zero;
             switch (this.gameObject.tag)
             {
                 case "Legia":
                     //ANIMACION Y SONIDO LEGIA CAYENDO Y CREANDO AREA
+                    this.gameObject.GetComponent<AudioSource>().Play();
                     this.gameObject.tag = "LegiaArea";
                     break;
                 case "Sirope":
                     //ANIMACION Y SONIDO SIROPE CAYENDO Y CREANDO AREA
+                    this.gameObject.GetComponent<AudioSource>().Play();
                     this.gameObject.tag = "SiropeArea";
                     break;
                 case "Aceite":
                     //ANIMACION Y SONIDO SIROPE CAYENDO Y CREANDO AREA
+                    this.gameObject.GetComponent<AudioSource>().Play();
                     this.gameObject.tag = "AceiteArea";
                     break;
             }
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(true);
-            timer = 5f;
 
-            Debug.Log("you garet");
+            timer = 5f;
         }
     }
 

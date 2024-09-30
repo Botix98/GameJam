@@ -11,6 +11,8 @@ public class Bala : MonoBehaviour
 
     public int damage;
 
+    public AudioClip sonidoBala;
+
     //private Rigidbody2D rb;
 
     //Vector2 posicion;
@@ -45,8 +47,7 @@ public class Bala : MonoBehaviour
         else
         {
             shootDirection = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
-
-            alcanceMax = GameObject.FindGameObjectWithTag("Enemigo").transform.GetChild(1).GetComponent<Arma>().alcanceArma * 2; //Lo multiplico por 2 para que la bala llegue mas lejos del alcance de disparo del enemigo
+            alcanceMax = GameObject.Find("Reponedor(Clone)").transform.GetChild(1).GetComponent<Arma>().alcanceArma * 2; //Lo multiplico por 2 para que la bala llegue mas lejos del alcance de disparo del enemigo
         }
     }
 
@@ -58,7 +59,7 @@ public class Bala : MonoBehaviour
         }
         else
         {
-            //ANIMACION DESTRUCCION BALA Y SONIDO
+            //ANIMACION DESTRUCCION BALA
 
             Destroy(this.gameObject);
         }
@@ -86,16 +87,19 @@ public class Bala : MonoBehaviour
         if (collision.CompareTag("Pared"))
         {
             //ANIMACION DESTRUCCION BALA Y SONIDO
-            Destroy(this.gameObject);
+            GameObject.Find("SonidoManager").GetComponent<AudioSource>().PlayOneShot(sonidoBala);
+            Destroy(this.gameObject, 0.01f);
         }
         else if (collision.CompareTag("Enemigo") && !balaEnemigo)
         {
             //ANIMACION DESTRUCCION BALA Y SONIDO
+            GameObject.Find("SonidoManager").GetComponent<AudioSource>().PlayOneShot(sonidoBala);
             Destroy(this.gameObject, 0.01f);
         }
         else if(collision.CompareTag("Player") && balaEnemigo)
         {
             //ANIMACION DESTRUCCION BALA Y SONIDO
+            GameObject.Find("SonidoManager").GetComponent<AudioSource>().PlayOneShot(sonidoBala);
             Destroy(this.gameObject, 0.01f);
         }
     }

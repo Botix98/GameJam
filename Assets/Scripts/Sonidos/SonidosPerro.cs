@@ -15,8 +15,8 @@ public class SonidosPerro : MonoBehaviour
     {
         Invoke("ladrido", 0.1f);
         Invoke("ladrido", 0.5f);
-        fuenteAndar.clip = andarPerro;
-        fuenteAndar.Play();
+        //fuenteAndar.clip = andarPerro;
+        //fuenteAndar.Play();
     }
 
     private void ladrido()

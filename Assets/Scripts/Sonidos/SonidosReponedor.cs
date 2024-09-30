@@ -13,8 +13,8 @@ public class SonidosReponedor : MonoBehaviour
     private void Start()
     {
 
-        fuenteAndar.clip = andarReponedor;
-        fuenteAndar.Play();
+        //fuenteAndar.clip = andarReponedor;
+        //fuenteAndar.Play();
     }
 
     public void dañoReponedor()

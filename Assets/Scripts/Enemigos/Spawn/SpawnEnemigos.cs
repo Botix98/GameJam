@@ -6,6 +6,7 @@ public class SpawnEnemigos : MonoBehaviour
 {
     public GameObject meleePrefab;
     public GameObject distanciaPrefab;
+
     public GameObject abuelaPrefab;
     public GameObject ciegoPrefab;
     public GameObject carniceroPrefab;
@@ -13,10 +14,11 @@ public class SpawnEnemigos : MonoBehaviour
 
     private float timerMelee = 0f;
     private float timerDistancia = 0f;
-    private float timerAbuela = 0f;
-    private float timerCiego = 0f;
-    private float timerCarnicero = 0f;
-    private float timerReponedor = 0f;
+
+    private float timerAbuela = 20f;
+    private float timerCiego = 15f;
+    private float timerCarnicero = 8f;
+    private float timerReponedor = 2f;
 
     private ListaCompra listaCompra;
 
@@ -48,10 +50,12 @@ public class SpawnEnemigos : MonoBehaviour
             timerDistancia -= Time.deltaTime;
         }
 
+        /////////////////////////////////////
+
         if (timerAbuela <= 0f)
         {
             vieja();
-            timerAbuela = 10f - listaCompra.elementosRecogidos * 2; //PONER AQUI EL TIEMPO DE SPAWN
+            timerAbuela = 25f - listaCompra.elementosRecogidos * 2; //PONER AQUI EL TIEMPO DE SPAWN
         }
         if (timerAbuela > 0f)
         {
@@ -61,7 +65,7 @@ public class SpawnEnemigos : MonoBehaviour
         if (timerCiego <= 0f)
         {
             ciego();
-            timerCiego = 10f - listaCompra.elementosRecogidos * 2; //PONER AQUI EL TIEMPO DE SPAWN
+            timerCiego = 15f - listaCompra.elementosRecogidos; //PONER AQUI EL TIEMPO DE SPAWN
         }
         if (timerCiego > 0f)
         {
@@ -71,7 +75,7 @@ public class SpawnEnemigos : MonoBehaviour
         if (timerCarnicero <= 0f)
         {
             carnicero();
-            timerCarnicero = 10f - listaCompra.elementosRecogidos * 2; //PONER AQUI EL TIEMPO DE SPAWN
+            timerCarnicero = 12f - listaCompra.elementosRecogidos * 1.4f; //PONER AQUI EL TIEMPO DE SPAWN
         }
         if (timerCarnicero > 0f)
         {
@@ -81,7 +85,7 @@ public class SpawnEnemigos : MonoBehaviour
         if (timerReponedor <= 0f)
         {
             reponedor();
-            timerReponedor = 10f - listaCompra.elementosRecogidos * 2; //PONER AQUI EL TIEMPO DE SPAWN
+            timerReponedor = 8f - listaCompra.elementosRecogidos; //PONER AQUI EL TIEMPO DE SPAWN
         }
         if (timerReponedor > 0f)
         {

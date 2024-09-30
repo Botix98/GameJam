@@ -17,8 +17,8 @@ public class SonidosAbuela : MonoBehaviour
     {
         fuenteAbuela.PlayOneShot(aparicionAbuela);
 
-        fuenteAndar.clip = andarAbuela;
-        fuenteAndar.Play();
+        //fuenteAndar.clip = andarAbuela;
+        //fuenteAndar.Play();
     }
 
     public void dañoAbuela()
