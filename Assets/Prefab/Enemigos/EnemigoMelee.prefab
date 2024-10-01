@@ -201,8 +201,13 @@ MonoBehaviour:
   velocidadEnemigo: 3
   jugador: {fileID: 0}
   balaAux: {fileID: 0}
+  carroAux: {fileID: 0}
+  bolso: {fileID: 0}
+  perro: {fileID: 0}
   balaPrefab: {fileID: 0}
   carroPrefab: {fileID: 0}
+  bolsoPrefab: {fileID: 0}
+  perroPrefab: {fileID: 0}
 --- !u!114 &7647852201237854907
 MonoBehaviour:
   m_ObjectHideFlags: 0

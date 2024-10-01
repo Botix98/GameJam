@@ -155,8 +155,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 7696286312872708544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -201,8 +201,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 395f6b9556f14704790df6035be6ee3a, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: a853f5564a49ed540b00b00c641a8177, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 7640417357179004795}
   - component: {fileID: 5616363954909876534}
   - component: {fileID: 3903879207640100149}
+  - component: {fileID: 8789600929933663921}
   m_Layer: 3
   m_Name: ViejaCarroYBolso
   m_TagString: Enemigo
@@ -339,6 +340,10 @@ MonoBehaviour:
   carroPrefab: {fileID: 6468038487260453799, guid: 7d83fa0fa0bf962439b02bcaa668a11e, type: 3}
   bolsoPrefab: {fileID: 5022383629677810326, guid: ddeb7ec3fccf9bf418853e390be4dcdc, type: 3}
   perroPrefab: {fileID: 0}
+  cuchillo: {fileID: 0}
+  fruta: {fileID: 0}
+  perroSuelto: 0
+  carroSuelto: 0
 --- !u!114 &6312749700121804848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,3 +666,33 @@ MonoBehaviour:
   aparicionAbuela: {fileID: 8300000, guid: 7ba43c8669b758a4589fba46bce41e6f, type: 3}
   fuenteAbuela: {fileID: 5616363954909876534}
   fuenteAndar: {fileID: 7640417357179004795}
+--- !u!114 &8789600929933663921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8469461328502282504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57235257238ab247976808a8beb2afd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiPath: {fileID: 4744912406297511997}
+  cuerpoCP: {fileID: 6786272626313203520}
+  ciegoPerroFrente: {fileID: 0}
+  ciegoPerroPerfil: {fileID: 0}
+  ciegoPerroEspalda: {fileID: 0}
+  ciegoFrente: {fileID: 0}
+  carniceroFrente: {fileID: 0}
+  carniceroPerfil: {fileID: 0}
+  carniceroEspalda: {fileID: 0}
+  viejaCarroFrontal: {fileID: 21300000, guid: a853f5564a49ed540b00b00c641a8177, type: 3}
+  viejaCarroPerfil: {fileID: 21300000, guid: f3b090029b942154a83a0a544031b0be, type: 3}
+  viejaCarroEspalda: {fileID: 21300000, guid: bd8461e865e6bff4d8bbbf21272ec239, type: 3}
+  viejaFrontal: {fileID: 21300000, guid: 516614de386a9ae44b7ff55118ad7bd2, type: 3}
+  viejaPerfil: {fileID: 21300000, guid: ff2bf4fd781085945b0b40151f5e6aaf, type: 3}
+  viejaEspalda: {fileID: 21300000, guid: bca7ab5a968a44d40b4e0ec3cb1c579e, type: 3}
+  reponedorFrontal: {fileID: 0}
+  reponedorPerfil: {fileID: 0}
+  reponedorEspalda: {fileID: 0}

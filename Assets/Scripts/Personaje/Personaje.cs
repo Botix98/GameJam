@@ -41,11 +41,20 @@ public class Personaje : MonoBehaviour
 
     private float timerPasos = 0f;
 
+    public Sprite personajeFrente;
+    public Sprite personajeEspalda;
+    public Sprite personajePerfilIzquierda;
+    public Sprite personajePerfilDerecha;
+
+    private GameObject cuerpoPersonaje;
+
     private bool paso = false;
 
     // Start se llama antes del primer frame
     void Start()
     {
+        cuerpoPersonaje = this.gameObject.transform.GetChild(0).gameObject;
+        cuerpoPersonaje.GetComponent<SpriteRenderer>().sprite = personajeFrente;
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -153,10 +162,27 @@ public class Personaje : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal"); // Para izquierda y derecha
         movement.y = Input.GetAxisRaw("Vertical");   // Para arriba y abajo
 
+        if (movement.y == 1)
+        {
+            cuerpoPersonaje.GetComponent<SpriteRenderer>().sprite = personajeEspalda;
+        }
+        else if (movement.y == -1)
+        {
+            cuerpoPersonaje.GetComponent<SpriteRenderer>().sprite = personajeFrente;
+        }
+        else if (movement.x == -1)
+        {
+            cuerpoPersonaje.GetComponent<SpriteRenderer>().sprite = personajePerfilIzquierda;
+        }
+        else if (movement.x == 1)
+        {
+            cuerpoPersonaje.GetComponent<SpriteRenderer>().sprite = personajePerfilDerecha;
+        }
+
         // Normalizamos el vector para que no se mueva más rápido en diagonal
         movement = movement.normalized;
 
-        if (Input.GetKeyDown("space") && timerFlash <= 0f))
+        if (Input.GetKeyDown("space") && timerFlash <= 0f)
         {
             //ANIMACION Y SONIDO DEL DASH
 

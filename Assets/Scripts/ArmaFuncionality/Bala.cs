@@ -47,7 +47,7 @@ public class Bala : MonoBehaviour
         else
         {
             shootDirection = (GameObject.FindGameObjectWithTag("Player").transform.position - transform.position).normalized;
-            alcanceMax = GameObject.Find("Reponedor(Clone)").transform.GetChild(1).GetComponent<Arma>().alcanceArma * 2; //Lo multiplico por 2 para que la bala llegue mas lejos del alcance de disparo del enemigo
+            //alcanceMax = GameObject.Find("Reponedor(Clone)").transform.GetChild(1).GetComponent<Arma>().alcanceArma * 2; //Lo multiplico por 2 para que la bala llegue mas lejos del alcance de disparo del enemigo
         }
     }
 

@@ -24,7 +24,12 @@ public class FuncionalidadEnemigos : MonoBehaviour
     public GameObject carroPrefab;
     public GameObject bolsoPrefab;
     public GameObject perroPrefab;
-    
+
+    public Sprite cuchillo;
+    public Sprite fruta;
+
+    public bool perroSuelto = false;
+    public bool carroSuelto = false;
 
     private float timer = 0f;
 
@@ -93,6 +98,7 @@ public class FuncionalidadEnemigos : MonoBehaviour
             perroSoltado = true;
             perro = Instantiate(perroPrefab, transform.position, transform.rotation);
             this.gameObject.GetComponent<AIPath>().enabled = false;
+            perroSuelto = true;
         }
     }
 
@@ -199,6 +205,8 @@ public class FuncionalidadEnemigos : MonoBehaviour
 
             armaEnemigo = bolso.GetComponent<Arma>();
 
+            carroSuelto = true;
+
             Destroy(this.gameObject.transform.GetChild(1).gameObject);
             //armaEnemigo.GetComponent<Arma>().municionArma--;
         }
@@ -210,12 +218,21 @@ public class FuncionalidadEnemigos : MonoBehaviour
         {
             Debug.Log("Arma disparada");
 
-            //SONIDO Y ANIMACION BALA DISPARADA
-
-            //Que desaparezca si choca con una pared, choca contra un enemigo o llega al rango maximo (calcular la distancia que lleva recorrida)
             balaAux = Instantiate(balaPrefab, armaEnemigo.transform.position, armaEnemigo.transform.rotation);
             balaAux.GetComponent<Bala>().damage = armaEnemigo.damageArma;
             balaAux.GetComponent<Bala>().balaEnemigo = true;
+
+            if (this.gameObject.name.Contains("Carnicero"))
+            {
+                balaAux.GetComponent<SpriteRenderer>().sprite = cuchillo;
+            }
+            else if (this.gameObject.name.Contains("Reponedor"))
+            {
+                balaAux.GetComponent<SpriteRenderer>().sprite = fruta;
+            }
+
+            //Lo multiplico por 2 para que la bala llegue mas lejos del alcance de disparo del enemigo
+            balaAux.GetComponent<Bala>().alcanceMax = this.gameObject.transform.GetChild(1).GetComponent<Arma>().alcanceArma * 2;
 
             timer = armaEnemigo.GetComponent<Arma>().cadenciaArma;
             //armaEnemigo.GetComponent<Arma>().municionArma--;

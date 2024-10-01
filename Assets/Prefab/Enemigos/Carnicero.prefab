@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 8175530444212336985}
   - component: {fileID: 8408258116733554619}
   - component: {fileID: 4732272910162250089}
+  - component: {fileID: 4417345867562360666}
   m_Layer: 3
   m_Name: Carnicero
   m_TagString: Enemigo
@@ -127,6 +128,16 @@ MonoBehaviour:
   carroPrefab: {fileID: 0}
   bolsoPrefab: {fileID: 0}
   perroPrefab: {fileID: 0}
+  cebolla: {fileID: 0}
+  cuchillo: {fileID: 21300000, guid: 72e2e5ee2ce78ba43a355a1d11a9fb47, type: 3}
+  fruta: {fileID: 0}
+  huevo: {fileID: 0}
+  lataConservas: {fileID: 0}
+  lataConservas1: {fileID: 0}
+  lataConservas2: {fileID: 0}
+  papelhigienico: {fileID: 0}
+  patata: {fileID: 0}
+  perroSuelto: 0
 --- !u!114 &6705969688919497340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,6 +457,27 @@ MonoBehaviour:
   golpeadoCarnicero: {fileID: 8300000, guid: cb04cab543839614a8e7f0aeb00a6e82, type: 3}
   fuenteCarnicero: {fileID: 8408258116733554619}
   fuenteAndar: {fileID: 8175530444212336985}
+--- !u!114 &4417345867562360666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988084161257060772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a57235257238ab247976808a8beb2afd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiPath: {fileID: 5466374709231711490}
+  cuerpoCP: {fileID: 8506829298848204241}
+  ciegoPerroFrente: {fileID: 0}
+  ciegoPerroPerfil: {fileID: 0}
+  ciegoPerroEspalda: {fileID: 0}
+  ciegoFrente: {fileID: 0}
+  carniceroFrente: {fileID: 21300000, guid: 325800ab13827bf4e9f4fb9ec2c758e4, type: 3}
+  carniceroPerfil: {fileID: 21300000, guid: 033c5638ad66e8b4bbd3b3e9bfba3136, type: 3}
+  carniceroEspalda: {fileID: 21300000, guid: 65a9ad18e500b9846ab6890c217260ff, type: 3}
 --- !u!1 &5955167226129539045
 GameObject:
   m_ObjectHideFlags: 0
@@ -574,7 +606,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.23, y: 0.23, z: 0.23}
+  m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 9062499338143519510}
@@ -620,8 +652,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b533c652136df4744a089524507a44c6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 72e2e5ee2ce78ba43a355a1d11a9fb47, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -658,8 +690,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8774847460351682589}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -704,8 +736,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 395f6b9556f14704790df6035be6ee3a, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 325800ab13827bf4e9f4fb9ec2c758e4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -26,7 +26,7 @@ public class ListaCompra : MonoBehaviour
             activar = false;
             fuente.PlayOneShot(audiosound);
 
-            GameObject.Find("Victoria").GetComponent<BoxCollider2D>().enabled = true;
+            GameObject.Find("Victoria").GetComponent<BoxCollider2D>().isTrigger = true;
 
             //ABRIR PUERTA (activar el colider que permite que me vaya del super)
         }
