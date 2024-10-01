@@ -12,15 +12,6 @@ public class ColisoinesPersonaje : MonoBehaviour
 
     private GameObject area;
 
-    /*private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            Debug.Log("ey");
-            //personaje.cogerArma();
-        }
-    }*/
-
     private float timerEmbutido = 0f;
     private float timerBolso = 0f;
     private float timerPerro = 0f;
@@ -226,6 +217,7 @@ public class ColisoinesPersonaje : MonoBehaviour
                     this.gameObject.GetComponent<Personaje>().vidaPersonaje += 3;
                 }
             }
+            this.gameObject.GetComponent<Personaje>().actualizarVida();
         }
     }
 

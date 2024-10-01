@@ -158,7 +158,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.004663199, y: -0.002331674}
+  m_Offset: {x: 0.073136866, y: 0.4097998}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -169,7 +169,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.37513596, y: 0.6222836}
+  m_Size: {x: 0.47186053, y: 0.80732226}
   m_EdgeRadius: 0
 --- !u!114 &8920982766769990357
 MonoBehaviour:
@@ -210,6 +210,10 @@ MonoBehaviour:
   carroPrefab: {fileID: 0}
   bolsoPrefab: {fileID: 0}
   perroPrefab: {fileID: 785217728152150577, guid: ac438436faa51f14f81d586052a75050, type: 3}
+  cuchillo: {fileID: 0}
+  fruta: {fileID: 0}
+  perroSuelto: 0
+  carroSuelto: 0
 --- !u!114 &1334702010374320815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,3 +456,12 @@ MonoBehaviour:
   carniceroFrente: {fileID: 0}
   carniceroPerfil: {fileID: 0}
   carniceroEspalda: {fileID: 0}
+  viejaCarroFrontal: {fileID: 0}
+  viejaCarroPerfil: {fileID: 0}
+  viejaCarroEspalda: {fileID: 0}
+  viejaFrontal: {fileID: 0}
+  viejaPerfil: {fileID: 0}
+  viejaEspalda: {fileID: 0}
+  reponedorFrontal: {fileID: 0}
+  reponedorPerfil: {fileID: 0}
+  reponedorEspalda: {fileID: 0}

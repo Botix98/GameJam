@@ -18,6 +18,15 @@ public class DispararArma : MonoBehaviour
 
     public GameObject balaAux;
 
+    public Sprite cebolla;
+    public Sprite fruta;
+    public Sprite huevo;
+    public Sprite conserva1;
+    public Sprite conserva2;
+    public Sprite conserva3;
+    public Sprite papelH;
+    public Sprite patata;
+
     // Update is called once per frame
     void Update()
     {
@@ -99,10 +108,38 @@ public class DispararArma : MonoBehaviour
             balaAux = Instantiate(balaPrefab, this.GetComponent<Personaje>().armaEquipada.transform.position, this.GetComponent<Personaje>().armaEquipada.transform.rotation);
             balaAux.GetComponent<Bala>().damage = this.gameObject.transform.GetChild(1).GetComponent<Arma>().damageArma;
 
-            /*if (this.gameObject.transform.GetChild(1).GetComponent<Arma>().armaEnemigo)
+            if (this.gameObject.transform.GetChild(1).name.Contains("Cebolla"))
             {
-                balaAux.GetComponent<Bala>().balaEnemigo = true;
-            }*/
+                balaAux.GetComponent<SpriteRenderer>().sprite = cebolla;
+            }
+            else if (this.gameObject.transform.GetChild(1).name.Contains("Fruta"))
+            {
+                balaAux.GetComponent<SpriteRenderer>().sprite = fruta;
+            }
+            else if (this.gameObject.transform.GetChild(1).name.Contains("LataConservas 1"))
+            {
+                balaAux.GetComponent<SpriteRenderer>().sprite = conserva2;
+            }
+            else if (this.gameObject.transform.GetChild(1).name.Contains("LataConservas 2"))
+            {
+                balaAux.GetComponent<SpriteRenderer>().sprite = conserva3;
+            }
+            else if (this.gameObject.transform.GetChild(1).name.Contains("LataConservas"))
+            {
+                balaAux.GetComponent<SpriteRenderer>().sprite = conserva1;
+            }
+            else if (this.gameObject.transform.GetChild(1).name.Contains("Papel"))
+            {
+                balaAux.GetComponent<SpriteRenderer>().sprite = papelH;
+            }
+            else if (this.gameObject.transform.GetChild(1).name.Contains("Patata"))
+            {
+                balaAux.GetComponent<SpriteRenderer>().sprite = patata;
+            }
+            else if (this.gameObject.transform.GetChild(1).name.Contains("Huevo"))
+            {
+                balaAux.GetComponent<SpriteRenderer>().sprite = huevo;
+            }
 
             timer = this.GetComponent<Personaje>().armaEquipada.GetComponent<Arma>().cadenciaArma;
             this.GetComponent<Personaje>().armaEquipada.GetComponent<Arma>().municionArma--;
