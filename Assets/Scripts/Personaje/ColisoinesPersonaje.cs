@@ -102,6 +102,7 @@ public class ColisoinesPersonaje : MonoBehaviour
                         {
                             timerEmbutido = collision.gameObject.GetComponent<Arma>().cadenciaArma;
                             this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
+                            this.gameObject.GetComponent<Personaje>().actualizarVida();
                             comprobarVida();
                         }
                         break;
@@ -110,6 +111,7 @@ public class ColisoinesPersonaje : MonoBehaviour
                         {
                             timerBolso = collision.gameObject.GetComponent<Arma>().cadenciaArma;
                             this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
+                            this.gameObject.GetComponent<Personaje>().actualizarVida();
                             comprobarVida();
                         }
                         break;
@@ -118,6 +120,7 @@ public class ColisoinesPersonaje : MonoBehaviour
                         {
                             timerPerro = collision.gameObject.GetComponent<Arma>().cadenciaArma;
                             this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
+                            this.gameObject.GetComponent<Personaje>().actualizarVida();
                             comprobarVida();
                         }
                         break;
@@ -129,6 +132,7 @@ public class ColisoinesPersonaje : MonoBehaviour
             else if (collision.CompareTag("Bala") && collision.gameObject.GetComponent<Bala>().balaEnemigo)
             {
                 this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Bala>().damage;
+                this.gameObject.GetComponent<Personaje>().actualizarVida();
                 comprobarVida();
 
                 timerInvulnerabilidad = 0.5f;
@@ -141,6 +145,7 @@ public class ColisoinesPersonaje : MonoBehaviour
                 timerRalentizado = 3f;
 
                 this.gameObject.GetComponent<Personaje>().vidaPersonaje -= collision.gameObject.GetComponent<Arma>().damageArma;
+                this.gameObject.GetComponent<Personaje>().actualizarVida();
                 comprobarVida();
 
                 timerInvulnerabilidad = 0.5f;
@@ -226,6 +231,8 @@ public class ColisoinesPersonaje : MonoBehaviour
 
     private void comprobarVida()
     {
+
+
         if (this.gameObject.GetComponent<Personaje>().vidaPersonaje <= 0)
         {
             //GAME OVER

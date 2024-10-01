@@ -28,6 +28,8 @@ public class Personaje : MonoBehaviour
 
     public int vidaPersonaje = 15;
 
+    public GameObject[] vidas;
+
     private float timer = 0f;
     public float timerFlash = 0f;
 
@@ -90,6 +92,24 @@ public class Personaje : MonoBehaviour
                 sonidosPersonaje.PlayOneShot(respiracionPersonaje);
             }
     }*/
+
+    public void actualizarVida()
+    {
+        for (int i = 0; i < 15; i++)
+        {
+            vidas[i].gameObject.SetActive(false);
+        }
+
+        if (vidaPersonaje < 0)
+        {
+            vidaPersonaje = 0;
+        }
+
+        for (int i = 0; i < vidaPersonaje; i++)
+        {
+            vidas[i].gameObject.SetActive(true);
+        }
+    }
 
     public void cogerArma()
     {
