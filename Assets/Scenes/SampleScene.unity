@@ -7596,7 +7596,7 @@ MonoBehaviour:
   comprobar: {fileID: 0}
   armaCogida: 0
   colisiones: {fileID: 992714821}
-  vidaPersonaje: 150
+  vidaPersonaje: 15
   vidas:
   - {fileID: 1891519659}
   - {fileID: 662504120}

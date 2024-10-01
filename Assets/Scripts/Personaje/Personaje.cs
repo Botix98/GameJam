@@ -156,7 +156,7 @@ public class Personaje : MonoBehaviour
         // Normalizamos el vector para que no se mueva más rápido en diagonal
         movement = movement.normalized;
 
-        if (Input.GetKeyDown("space"))// && timer <= 0f)
+        if (Input.GetKeyDown("space") && timerFlash <= 0f))
         {
             //ANIMACION Y SONIDO DEL DASH
 

@@ -51,6 +51,7 @@ public class FuncionalidadEnemigos : MonoBehaviour
         comprobarAceite();
         comprobarLegia();
         comprobarSirope();
+        comprobarDistancia();
 
         if (armaEnemigo.CompareTag("ArmaDistancia") && !this.gameObject.name.Contains("ViejaCarroYBolso"))
         {
@@ -95,6 +96,20 @@ public class FuncionalidadEnemigos : MonoBehaviour
         }
     }
 
+    private void comprobarDistancia()
+    {
+        if (!this.gameObject.name.Contains("Ciego"))
+        {
+            if (this.gameObject.transform.GetChild(1).CompareTag("ArmaDistancia"))
+            {
+                if (Mathf.Abs((this.gameObject.transform.position - GameObject.Find("Personaje").transform.position).magnitude)
+                    <= this.gameObject.transform.GetChild(1).GetComponent<Arma>().alcanceArma)
+                {
+                    this.gameObject.GetComponent<AIPath>().maxSpeed = 0f;
+                }
+            }
+        }
+    }
 
     private void comprobarVida()
     {
