@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 832475953937347822}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.7, y: -0.02, z: -0.24}
   m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 1111962617218488808}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.7, y: -0.02, z: -0.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -132,9 +132,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   municionArma: 15
   nombreArma: Cuchillo
-  alcanceArma: 3
+  alcanceArma: 6
   damageArma: 3
-  cadenciaArma: 1.25
+  cadenciaArma: 1
   areaArma: 0
   valorArea: 0
   tiempoAreaArma: 0

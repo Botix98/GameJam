@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   municionArma: 1
   nombreArma: Carro
-  alcanceArma: 3
+  alcanceArma: 10
   damageArma: 2
   cadenciaArma: 1
   areaArma: 0
@@ -248,7 +248,7 @@ Transform:
   m_GameObject: {fileID: 8469461328502282504}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.1, y: -4, z: 0}
+  m_LocalPosition: {x: 8.1, y: -4, z: -0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armaEnemigo: {fileID: 2629291954932450257}
   vidaEnemigo: 15
-  velocidadEnemigo: 2
+  velocidadEnemigo: 3
   jugador: {fileID: 0}
   balaAux: {fileID: 0}
   carroAux: {fileID: 0}

@@ -51,7 +51,7 @@ public class MusicaFondo : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name.Equals("SampleScene"))
         {
-            if(GameObject.Find("Personaje").GetComponent<Personaje>().vidaPersonaje <= 0)
+            if(GameObject.Find("Personaje").GetComponent<Personaje>().vidaPersonaje <= 0 && !gameOverBool)
             {
                 gameOverBool = true;
                 fuenteMusica.Stop();

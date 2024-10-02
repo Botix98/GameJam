@@ -41,7 +41,7 @@ public class AreaDeCompra : MonoBehaviour
 
         if (timer > 0 && timer <= 7)
         {
-            porcentaje = timer / 7;
+            porcentaje = 17 * (timer / 7);
 
             visual.transform.localScale = new Vector3(1f, 1f, 1f) * porcentaje;
         }
@@ -63,6 +63,11 @@ public class AreaDeCompra : MonoBehaviour
             }
 
             //SONIDO Y ANIMACION REACTIVACION ZONAS DE RECUPERACION DE VIDA
+
+
+            GameObject.Find("RecuperarVida 1").GetComponent<SpriteRenderer>().enabled = true;
+            GameObject.Find("RecuperarVida 2").GetComponent<SpriteRenderer>().enabled = true;
+            GameObject.Find("RecuperarVida 3").GetComponent<SpriteRenderer>().enabled = true;
 
             GameObject.Find("RecuperarVida 1").GetComponent<CircleCollider2D>().enabled = true;
             GameObject.Find("RecuperarVida 2").GetComponent<CircleCollider2D>().enabled = true;

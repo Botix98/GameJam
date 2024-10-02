@@ -76,13 +76,13 @@ public class EnemyGRF : MonoBehaviour
         }
         else if (aiPath.desiredVelocity.x >= 0.01f)
         {
-            cuerpoCP.GetComponent<SpriteRenderer>().sprite = reponedorPerfilIZ;
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            cuerpoCP.GetComponent<SpriteRenderer>().sprite = reponedorPerfil;
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
         else if (aiPath.desiredVelocity.x <= -0.01f)
         {
             cuerpoCP.GetComponent<SpriteRenderer>().sprite = reponedorPerfil;
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
 
@@ -98,13 +98,13 @@ public class EnemyGRF : MonoBehaviour
         }
         else if (aiPath.desiredVelocity.x >= 0.01f)
         {
-            cuerpoCP.GetComponent<SpriteRenderer>().sprite = viejaPerfilIZ;
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            cuerpoCP.GetComponent<SpriteRenderer>().sprite = viejaPerfil;
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
         else if (aiPath.desiredVelocity.x <= -0.01f)
         {
             cuerpoCP.GetComponent<SpriteRenderer>().sprite = viejaPerfil;
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
 
@@ -120,13 +120,13 @@ public class EnemyGRF : MonoBehaviour
         }
         else if (aiPath.desiredVelocity.x >= 0.01f)
         {
-            cuerpoCP.GetComponent<SpriteRenderer>().sprite = viejaCarroPerfilIZ;
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            cuerpoCP.GetComponent<SpriteRenderer>().sprite = viejaCarroPerfil;
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
         else if (aiPath.desiredVelocity.x <= -0.01f)
         {
             cuerpoCP.GetComponent<SpriteRenderer>().sprite = viejaCarroPerfil;
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
 
@@ -142,13 +142,13 @@ public class EnemyGRF : MonoBehaviour
         }
         else if (aiPath.desiredVelocity.x >= 0.01f)
         {
-            cuerpoCP.GetComponent<SpriteRenderer>().sprite = carniceroPerfilIZ;
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            cuerpoCP.GetComponent<SpriteRenderer>().sprite = carniceroPerfil;
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
         else if (aiPath.desiredVelocity.x <= -0.01f)
         {
             cuerpoCP.GetComponent<SpriteRenderer>().sprite = carniceroPerfil;
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
 
@@ -164,13 +164,13 @@ public class EnemyGRF : MonoBehaviour
         }
         else if (aiPath.desiredVelocity.x >= 0.01f)
         {
-            cuerpoCP.GetComponent<SpriteRenderer>().sprite = ciegoPerroPerfilIZ;
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            cuerpoCP.GetComponent<SpriteRenderer>().sprite = ciegoPerroPerfil;
+            transform.localScale = new Vector3(1f, 1f, 1f);
         }
         else if (aiPath.desiredVelocity.x <= -0.01f)
         {
             cuerpoCP.GetComponent<SpriteRenderer>().sprite = ciegoPerroPerfil;
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(-1f, 1f, 1f);
         }
     }
 }

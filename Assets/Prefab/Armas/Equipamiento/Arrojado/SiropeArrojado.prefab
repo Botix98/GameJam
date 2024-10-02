@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 2526591510480642652}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -52,7 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   municionArma: 5
   nombreArma: Sirope
-  alcanceArma: 1
+  alcanceArma: 5
   damageArma: 6
   cadenciaArma: 1
   areaArma: 1
@@ -268,7 +268,7 @@ Transform:
   m_GameObject: {fileID: 8902781205090638543}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []

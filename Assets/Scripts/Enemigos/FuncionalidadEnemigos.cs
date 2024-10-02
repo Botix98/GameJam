@@ -90,7 +90,7 @@ public class FuncionalidadEnemigos : MonoBehaviour
 
     private void soltarPerro()
     {
-        if (timer <= 0f && Mathf.Abs((jugador.transform.position - this.gameObject.transform.position).magnitude) < 5f)
+        if (timer <= 0f && Mathf.Abs((jugador.transform.position - this.gameObject.transform.position).magnitude) < 12f)
         {
             Debug.Log("Perro soltado");
 
@@ -186,7 +186,7 @@ public class FuncionalidadEnemigos : MonoBehaviour
 
     public void dispararCarro()
     {
-        if (timer <= 0f && Mathf.Abs((jugador.transform.position - this.gameObject.transform.position).magnitude) < 5f)
+        if (timer <= 0f && Mathf.Abs((jugador.transform.position - this.gameObject.transform.position).magnitude) < this.gameObject.transform.GetChild(1).GetComponent<Arma>().alcanceArma)
         {
             Debug.Log("Carro disparado");
 
@@ -198,6 +198,7 @@ public class FuncionalidadEnemigos : MonoBehaviour
             bolso.transform.parent = this.transform;
 
             carroAux = Instantiate(carroPrefab, armaEnemigo.transform.position, armaEnemigo.transform.rotation);
+            carroAux.transform.position = this.gameObject.transform.position;
             carroAux.GetComponent<CarroProyectil>().damage = armaEnemigo.damageArma;
             carroAux.GetComponent<CarroProyectil>().balaEnemigo = true;
 
@@ -224,10 +225,12 @@ public class FuncionalidadEnemigos : MonoBehaviour
 
             if (this.gameObject.name.Contains("Carnicero"))
             {
+                balaAux.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
                 balaAux.GetComponent<SpriteRenderer>().sprite = cuchillo;
             }
             else if (this.gameObject.name.Contains("Reponedor"))
             {
+                balaAux.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
                 balaAux.GetComponent<SpriteRenderer>().sprite = fruta;
             }
 

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 868204098683373986}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.873, y: -0.46089488, z: -0.1}
+  m_LocalPosition: {x: -1.873, y: -0.46089488, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   municionArma: 8
   nombreArma: LataConservas
-  alcanceArma: 3
+  alcanceArma: 6
   damageArma: 4
   cadenciaArma: 1.25
   areaArma: 0
@@ -127,7 +127,7 @@ Transform:
   m_GameObject: {fileID: 5529667839214533933}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.7, y: -0.02, z: -0.24}
   m_LocalScale: {x: 0.09, y: 0.09, z: 0.09}
   m_ConstrainProportionsScale: 1
   m_Children: []

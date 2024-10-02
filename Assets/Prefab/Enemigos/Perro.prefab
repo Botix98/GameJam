@@ -35,7 +35,7 @@ Transform:
   m_GameObject: {fileID: 785217728152150577}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.1}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -584,7 +584,7 @@ MonoBehaviour:
   nombreArma: PerroArma
   alcanceArma: -1
   damageArma: 3
-  cadenciaArma: 0.5
+  cadenciaArma: 1.25
   areaArma: 0
   valorArea: 0
   tiempoAreaArma: 0

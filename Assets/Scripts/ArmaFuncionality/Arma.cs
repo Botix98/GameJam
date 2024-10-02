@@ -20,6 +20,8 @@ public class Arma : MonoBehaviour
         if (municionArma == 0 && !this.gameObject.name.Contains("Perro"))
         {
             //ANIMIACION Y SONIDO CUANDO EL ARMA SE DESTRUYE POR FALTA DE MUNICION
+            GameObject.Find("Personaje").GetComponent<Personaje>().iconoInvisible();
+
             Destroy(this.gameObject, 0.1f);
         }
     }

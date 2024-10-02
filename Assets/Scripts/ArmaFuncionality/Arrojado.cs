@@ -11,7 +11,7 @@ public class Arrojado : MonoBehaviour
     Vector2 shootDirection;
 
     Vector3 mousePosition;
-    private float velocidad = 1f;
+    private float velocidad = 6f;
 
     private float timer = 0f;
 

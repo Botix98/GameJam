@@ -75,6 +75,8 @@ public class DispararArma : MonoBehaviour
                     break;
             }
             Destroy(this.GetComponent<Personaje>().armaEquipada);
+            this.gameObject.GetComponent<Personaje>().municion.text = "0";
+            this.gameObject.GetComponent<Personaje>().iconoInvisible();
         }
     }
 
@@ -95,6 +97,7 @@ public class DispararArma : MonoBehaviour
 
             timer = this.GetComponent<Personaje>().armaEquipada.GetComponent<Arma>().cadenciaArma;
             this.GetComponent<Personaje>().armaEquipada.GetComponent<Arma>().municionArma--;
+            this.gameObject.GetComponent<Personaje>().municion.text = this.GetComponent<Personaje>().armaEquipada.GetComponent<Arma>().municionArma.ToString();
         }
     }
 
@@ -110,39 +113,50 @@ public class DispararArma : MonoBehaviour
 
             if (this.gameObject.transform.GetChild(1).name.Contains("Cebolla"))
             {
+                balaAux.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 balaAux.GetComponent<SpriteRenderer>().sprite = cebolla;
             }
             else if (this.gameObject.transform.GetChild(1).name.Contains("Fruta"))
             {
+                balaAux.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
                 balaAux.GetComponent<SpriteRenderer>().sprite = fruta;
             }
             else if (this.gameObject.transform.GetChild(1).name.Contains("LataConservas 1"))
             {
+                balaAux.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 balaAux.GetComponent<SpriteRenderer>().sprite = conserva2;
             }
             else if (this.gameObject.transform.GetChild(1).name.Contains("LataConservas 2"))
             {
+                balaAux.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 balaAux.GetComponent<SpriteRenderer>().sprite = conserva3;
             }
             else if (this.gameObject.transform.GetChild(1).name.Contains("LataConservas"))
             {
+                balaAux.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 balaAux.GetComponent<SpriteRenderer>().sprite = conserva1;
             }
             else if (this.gameObject.transform.GetChild(1).name.Contains("Papel"))
             {
+                balaAux.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
                 balaAux.GetComponent<SpriteRenderer>().sprite = papelH;
             }
             else if (this.gameObject.transform.GetChild(1).name.Contains("Patata"))
             {
+                balaAux.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
                 balaAux.GetComponent<SpriteRenderer>().sprite = patata;
             }
             else if (this.gameObject.transform.GetChild(1).name.Contains("Huevo"))
             {
+                balaAux.transform.localScale = new Vector3(0.05f, 0.05f, 0.05f);
                 balaAux.GetComponent<SpriteRenderer>().sprite = huevo;
             }
 
             timer = this.GetComponent<Personaje>().armaEquipada.GetComponent<Arma>().cadenciaArma;
             this.GetComponent<Personaje>().armaEquipada.GetComponent<Arma>().municionArma--;
+
+            this.gameObject.GetComponent<Personaje>().municion.text = this.GetComponent<Personaje>().armaEquipada.GetComponent<Arma>().municionArma.ToString();
+
         }
     }
 }

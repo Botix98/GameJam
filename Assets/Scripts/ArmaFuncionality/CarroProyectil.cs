@@ -12,7 +12,7 @@ public class CarroProyectil : MonoBehaviour
     Vector3 posInicialCarro;
     Vector3 mousePosition;
 
-    private float velocidad = 3f;
+    private float velocidad = 8f;
 
     Rigidbody2D rb;
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class Personaje : MonoBehaviour
@@ -50,9 +51,35 @@ public class Personaje : MonoBehaviour
 
     private bool paso = false;
 
+    public GameObject frutas;
+    public GameObject embutido;
+    public GameObject embutido1;
+    public GameObject embutido2;
+    public GameObject legia;
+    public GameObject aceite;
+    public GameObject sirope;
+    public GameObject limpieza;
+    public GameObject limpieza1;
+    public GameObject limpieza2;
+    public GameObject limpieza3;
+    public GameObject patatas;
+    public GameObject papelH;
+    public GameObject huevos;
+    public GameObject jamon1;
+    public GameObject jamon2;
+    public GameObject lataConservas;
+    public GameObject lataConservas1;
+    public GameObject lataConservas2;
+    public GameObject cebollas;
+
+    public GameObject icono;
+    public Text municion;
+    Color colora;
+
     // Start se llama antes del primer frame
     void Start()
     {
+        iconoInvisible();
         cuerpoPersonaje = this.gameObject.transform.GetChild(0).gameObject;
         cuerpoPersonaje.GetComponent<SpriteRenderer>().sprite = personajeFrente;
         rb = GetComponent<Rigidbody2D>();
@@ -102,6 +129,20 @@ public class Personaje : MonoBehaviour
             }
     }*/
 
+    public void iconoInvisible()
+    {
+        colora = icono.GetComponent<UnityEngine.UI.Image>().color;
+        colora.a = 0f;
+        icono.GetComponent<UnityEngine.UI.Image>().color = colora;
+    }
+
+    public void iconoVisible()
+    {
+        colora = icono.GetComponent<UnityEngine.UI.Image>().color;
+        colora.a = 1f;
+        icono.GetComponent<UnityEngine.UI.Image>().color = colora;
+    }
+
     public void actualizarVida()
     {
         for (int i = 0; i < 15; i++)
@@ -128,9 +169,16 @@ public class Personaje : MonoBehaviour
 
             sonidosPersonaje.PlayOneShot(cogerObjeto);
 
+            this.gameObject.GetComponent<Personaje>().iconoInvisible();
+
             Destroy(armaEquipada);
-            armaEquipada = Instantiate(GameObject.Find(GetComponent<ColisoinesPersonaje>().nombreArma)); //CUIDADO CON EL FIND
+            //armaEquipada = Instantiate(GameObject.Find(GetComponent<ColisoinesPersonaje>().nombreArma)); //CUIDADO CON EL FIND
+
+            instanciarArma();
+
             armaEquipada.transform.position = this.transform.position;
+
+            this.gameObject.GetComponent<Personaje>().municion.text = this.GetComponent<Personaje>().armaEquipada.GetComponent<Arma>().municionArma.ToString();
 
             if (armaEquipada.GetComponent<Arma>().areaArma)
             {
@@ -153,6 +201,99 @@ public class Personaje : MonoBehaviour
             {
                 armaEquipada.GetComponent<BoxCollider2D>().enabled = false;
             }
+        }
+    }
+
+    private void instanciarArma()
+    {
+        iconoVisible();
+
+        switch (this.gameObject.GetComponent<ColisoinesPersonaje>().nombreArma)
+        {
+            case "Frutas":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = frutas.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(frutas);
+                break;
+            case "Embutido 2":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = embutido2.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(embutido2);
+                break;
+            case "Embutido 1":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = embutido1.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(embutido1);
+                break;
+            case "Embutido":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = embutido.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(embutido);
+                break;
+            case "Legia":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = legia.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(legia);
+                break;
+            case "Aceite":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = aceite.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(aceite);
+                break;
+            case "Sirope":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = sirope.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(sirope);
+                break;
+            case "Limpieza 3":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = limpieza3.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(limpieza3);
+                break;
+            case "Limpieza 2":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = limpieza2.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(limpieza2);
+                break;
+            case "Limpieza 1":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = limpieza1.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(limpieza1);
+                break;
+            case "Limpieza":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = limpieza.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(limpieza);
+                break;
+            case "Patatas":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = patatas.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(patatas);
+                break;
+            case "PapelHigienico(1)":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = papelH.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(papelH);
+                break;
+            case "PapelHigienico":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = papelH.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(papelH);
+                break;
+            case "Huevos":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = huevos.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(huevos);
+                break;
+            case "Jamon":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = jamon1.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(jamon1);
+                break;
+            case "Jamon 1":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = jamon2.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(jamon2);
+                break;
+            case "LataConservas 2":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = lataConservas2.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(lataConservas2);
+                break;
+            case "LataConservas 1":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = lataConservas1.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(lataConservas1);
+                break;
+            case "LataConservas":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = lataConservas.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(lataConservas);
+                break;
+            case "Cebollas":
+                icono.GetComponent<UnityEngine.UI.Image>().sprite = cebollas.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite;
+                armaEquipada = Instantiate(cebollas);
+                break;
         }
     }
 
