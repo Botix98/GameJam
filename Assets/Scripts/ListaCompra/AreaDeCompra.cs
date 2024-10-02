@@ -8,11 +8,19 @@ public class AreaDeCompra : MonoBehaviour
     private bool enArea = false;
     public int indicador;
     public GameObject listaDeLaCompra;
+    public GameObject visual;
 
     public AudioSource sonidoComprar;
     public AudioClip sonido;
 
     private bool activar = true;
+
+    private float porcentaje = 0f;
+
+    private void Start()
+    {
+        visual.transform.localScale = Vector3.zero;
+    }
 
     // Update is called once per frame
     void Update()
@@ -29,6 +37,13 @@ public class AreaDeCompra : MonoBehaviour
         if (timer < 0f)
         {
             timer = 0f;
+        }
+
+        if (timer > 0 && timer <= 7)
+        {
+            porcentaje = timer / 7;
+
+            visual.transform.localScale = new Vector3(1f, 1f, 1f) * porcentaje;
         }
 
         if (timer >= 7f)
