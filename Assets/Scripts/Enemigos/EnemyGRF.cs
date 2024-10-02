@@ -11,23 +11,28 @@ public class EnemyGRF : MonoBehaviour
     
     public Sprite ciegoPerroFrente;
     public Sprite ciegoPerroPerfil;
+    public Sprite ciegoPerroPerfilIZ;
     public Sprite ciegoPerroEspalda;
     public Sprite ciegoFrente;
 
     public Sprite carniceroFrente;
     public Sprite carniceroPerfil;
+    public Sprite carniceroPerfilIZ;
     public Sprite carniceroEspalda;
 
     public Sprite viejaCarroFrontal;
     public Sprite viejaCarroPerfil;
+    public Sprite viejaCarroPerfilIZ;
     public Sprite viejaCarroEspalda;
 
     public Sprite viejaFrontal;
     public Sprite viejaPerfil;
+    public Sprite viejaPerfilIZ;
     public Sprite viejaEspalda;
 
     public Sprite reponedorFrontal;
     public Sprite reponedorPerfil;
+    public Sprite reponedorPerfilIZ;
     public Sprite reponedorEspalda;
 
     // Update is called once per frame
@@ -71,7 +76,7 @@ public class EnemyGRF : MonoBehaviour
         }
         else if (aiPath.desiredVelocity.x >= 0.01f)
         {
-            cuerpoCP.GetComponent<SpriteRenderer>().sprite = reponedorPerfil;
+            cuerpoCP.GetComponent<SpriteRenderer>().sprite = reponedorPerfilIZ;
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         else if (aiPath.desiredVelocity.x <= -0.01f)
@@ -93,7 +98,7 @@ public class EnemyGRF : MonoBehaviour
         }
         else if (aiPath.desiredVelocity.x >= 0.01f)
         {
-            cuerpoCP.GetComponent<SpriteRenderer>().sprite = viejaPerfil;
+            cuerpoCP.GetComponent<SpriteRenderer>().sprite = viejaPerfilIZ;
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         else if (aiPath.desiredVelocity.x <= -0.01f)
@@ -115,7 +120,7 @@ public class EnemyGRF : MonoBehaviour
         }
         else if (aiPath.desiredVelocity.x >= 0.01f)
         {
-            cuerpoCP.GetComponent<SpriteRenderer>().sprite = viejaCarroPerfil;
+            cuerpoCP.GetComponent<SpriteRenderer>().sprite = viejaCarroPerfilIZ;
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         else if (aiPath.desiredVelocity.x <= -0.01f)
@@ -137,7 +142,7 @@ public class EnemyGRF : MonoBehaviour
         }
         else if (aiPath.desiredVelocity.x >= 0.01f)
         {
-            cuerpoCP.GetComponent<SpriteRenderer>().sprite = carniceroPerfil;
+            cuerpoCP.GetComponent<SpriteRenderer>().sprite = carniceroPerfilIZ;
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         else if (aiPath.desiredVelocity.x <= -0.01f)
@@ -159,7 +164,7 @@ public class EnemyGRF : MonoBehaviour
         }
         else if (aiPath.desiredVelocity.x >= 0.01f)
         {
-            cuerpoCP.GetComponent<SpriteRenderer>().sprite = ciegoPerroPerfil;
+            cuerpoCP.GetComponent<SpriteRenderer>().sprite = ciegoPerroPerfilIZ;
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
         else if (aiPath.desiredVelocity.x <= -0.01f)

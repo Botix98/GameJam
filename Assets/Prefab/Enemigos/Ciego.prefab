@@ -324,7 +324,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!82 &5928338719309428680
 AudioSource:
   m_ObjectHideFlags: 0
@@ -451,17 +451,22 @@ MonoBehaviour:
   cuerpoCP: {fileID: 6327914509515558742}
   ciegoPerroFrente: {fileID: 21300000, guid: 7cd5d83afcef040458954ca7f5251e67, type: 3}
   ciegoPerroPerfil: {fileID: 21300000, guid: e364032a234ee1a4ca16275768942798, type: 3}
+  ciegoPerroPerfilIZ: {fileID: 21300000, guid: 3e32e611e48eae14b9ae7a37a07784cd, type: 3}
   ciegoPerroEspalda: {fileID: 21300000, guid: c935ec6d63f24b345a3e106c8d199b19, type: 3}
   ciegoFrente: {fileID: 21300000, guid: 8b230d0ff75b60c4b9b69ee05cfb83ce, type: 3}
   carniceroFrente: {fileID: 0}
   carniceroPerfil: {fileID: 0}
+  carniceroPerfilIZ: {fileID: 0}
   carniceroEspalda: {fileID: 0}
   viejaCarroFrontal: {fileID: 0}
   viejaCarroPerfil: {fileID: 0}
+  viejaCarroPerfilIZ: {fileID: 0}
   viejaCarroEspalda: {fileID: 0}
   viejaFrontal: {fileID: 0}
   viejaPerfil: {fileID: 0}
+  viejaPerfilIZ: {fileID: 0}
   viejaEspalda: {fileID: 0}
   reponedorFrontal: {fileID: 0}
   reponedorPerfil: {fileID: 0}
+  reponedorPerfilIZ: {fileID: 0}
   reponedorEspalda: {fileID: 0}
